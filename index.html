@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Friends of Manteca Animal Shelter</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #444;
+            line-height: 1.6;
+        }
+        
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        a {
+            color: #0a5879;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            margin: 0.5em 0;
+        }
+        
+        h2 {
+            color: #0a5879;
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        /* Header Styles */
+        .logoAndAddress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logoAndAddress img {
+            max-width: 400px;
+            height: auto;
+        }
+        
+        .addressInHeader {
+            text-align: right;
+            line-height: 1.5;
+        }
+        
+        .socialFooter {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+        
+        .socialFooter .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .socialFooter .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #0a5879;
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            font-size: 20px;
+        }
+        
+        /* Navigation */
+        #masthead {
+            background-color: #0a5879;
+            color: white;
+        }
+        
+        .main-navigation {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .mega-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .mega-menu-item {
+            position: relative;
+        }
+        
+        .mega-menu-item a {
+            display: block;
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .mega-menu-item a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background-image: url('https://via.placeholder.com/1200x400/0a5879/ffffff?text=Friends+of+Manteca+Animal+Shelter');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .hero-content {
+            background-color: rgba(0,0,0,0.6);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .hero-content h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .donate-button {
+            background-color: #0a5879;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 13px;
+            font-size: 18px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 20px auto;
+            font-weight: bold;
+        }
+        
+        .donate-button:hover {
+            background-color: #084761;
+            text-decoration: none;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            margin: 40px auto;
+            text-align: center;
+            max-width: 80%;
+        }
+        
+        .content-section p {
+            margin-bottom: 25px;
+        }
+        
+        .section-button {
+            color: white;
+            background-color: #0a5879;
+            padding: 8px 16px;
+            border-radius: 5px;
+            display: inline-block;
+            font-size: 13px;
+            line-height: 26px;
+            margin-top: 10px;
+        }
+        
+        .section-button:hover {
+            background-color: #084761;
+            text-decoration: none;
+        }
+        
+        /* Video Section */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 30px auto;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Sponsors Section */
+        .sponsors-section {
+            margin: 40px auto;
+            text-align: center;
+        }
+        
+        .sponsors-carousel {
+            display: flex;
+            overflow: hidden;
+            margin: 20px auto;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .sponsor-item {
+            margin: 10px 20px;
+            max-width: 160px;
+        }
+        
+        .sponsor-item img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid rgba(255,255,255,0.75);
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        .sponsor-item img:hover {
+            border-color: rgba(255,255,255,1);
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        /* Footer */
+        #colophon {
+            background-color: #f8f8f8;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .payPalImg {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 80%;
+        }
+        
+        .footerStyle {
+            font-size: 0.9em;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .privacyPolicyFtr {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logoAndAddress {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .addressInHeader {
+                text-align: center;
+                margin-top: 15px;
+            }
+            
+            .mega-menu {
+                flex-direction: column;
+            }
+            
+            .content-section {
+                max-width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="page" class="hfeed site">
+        <!-- Header -->
+        <div class="logoAndAddress">
+            <a href="index.html">
+                <img src="https://via.placeholder.com/400x100/0a5879/ffffff?text=Friends+of+Manteca+Animal+Shelter" alt="Friends of Manteca Animal Shelter Logo">
+            </a>
+            <div class="addressInHeader">
+                <div class="social-icons">
+                    <a href="#" title="Email"><i>@</i></a>
+                    <a href="#" title="Facebook"><i>f</i></a>
+                    <a href="#" title="Instagram"><i>ig</i></a>
+                </div>
+                <div class="textInside">
+                    <br>
+                    <strong>Mailing Address</strong>
+                    <br>
+                    PO Box 123<br>Manteca, California 95337
+                </div>
+            </div>
+        </div>
+        
+        <header id="masthead" class="site-header" role="banner">
+            <nav id="site-navigation" class="main-navigation" role="navigation">
+                <ul class="mega-menu">
+                    <li class="mega-menu-item"><a href="index.html">Home</a></li>
+                    <li class="mega-menu-item"><a href="#">Animals</a></li>
+                    <li class="mega-menu-item"><a href="#">About Us</a></li>
+                    <li class="mega-menu-item"><a href="#">Our Programs</a></li>
+                    <li class="mega-menu-item"><a href="#">Get Involved</a></li>
+                    <li class="mega-menu-item"><a href="#">Donations</a></li>
+                    <li class="mega-menu-item"><a href="#">Events</a></li>
+                    <li class="mega-menu-item"><a href="#">Shop</a></li>
+                    <li class="mega-menu-item"><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>Friends of Manteca Animal Shelter</h1>
+                <p>Making a difference, one animal at a time.</p>
+                <a href="#" class="donate-button">DONATE</a>
+            </div>
+        </div>
+        
+        <div id="main" class="wrapper">
+            <div id="primary" class="site-content">
+                <div id="content" role="main">
+                    <!-- About Us Section -->
+                    <div class="content-section">
+                        <h2>About Friends of Manteca Animal Shelter</h2>
+                        <p>
+                            Friends of Manteca Animal Shelter is a unique, non-profit animal-rescue organization located in Manteca, CA. We work in partnership with the Manteca Animal Shelter to support animals and the people who love them through rescue, rehoming, spay/neuter programs, and education.
+                        </p>
+                        <a href="#" class="section-button">About Us</a>
+                    </div>
+                    
+                    <!-- Video Section -->
+                    <div class="content-section">
+                        <div class="video-container">
+                            <!-- Replace with your actual video embed code -->
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    
+                    <!-- Newsletter Section -->
+                    <div class="content-section">
+                        <h2>Join Our Newsletter</h2>
+                        <p>
+                            Do you want to read stories from our shelter, learn more about our volunteers, and meet some of the amazing animals who have come through our program? Sign up for our newsletter to stay updated with all the latest news from Friends of Manteca Animal Shelter!
+                        </p>
+                        <a href="#" class="section-button">Subscribe Now</a>
+                    </div>
+                    
+                    <!-- Support Us Section -->
+                    <div class="content-section">
+                        <h2>SUPPORT US!</h2>
+                        <p>
+                            Join the Friends of Manteca Animal Shelter team! Donate, volunteer, foster, donate items via our Amazon Wishlist and purchase our merchandise! All proceeds help us save lives through rescue, rehabilitation, spay/neuter, wellness and education.
+                        </p>
+                        <a href="#" class="section-button">Support Us!</a>
+                    </div>
+                    
+                    <!-- Donate Section -->
+                    <div class="content-section">
+                        <h2>MAKE A DONATION</h2>
+                        <p>
+                            Friends of Manteca Animal Shelter is a 501(c)(3) organization that relies on your donations to continue to save companion animals. We are a 100% donor supported and we thank you for helping us make a difference, one animal at a time.
+                        </p>
+                        <a href="#" class="section-button">Please Make A Donation</a>
+                    </div>
+                    
+                    <!-- Sponsors Section -->
+                    <div class="sponsors-section">
+                        <h2>Our Sponsors</h2>
+                        <div class="sponsors-carousel">
+                            <div class="sponsor-item">
+                                <img src="https://via.placeholder.com/160x160/dddddd/555555?text=Sponsor+1" alt="Sponsor 1">
+                            </div>
+                            <div class="sponsor-item">
+                                <img src="https://via.placeholder.com/160x160/dddddd/555555?text=Sponsor+2" alt="Sponsor 2">
+                            </div>
+                            <div class="sponsor-item">
+                                <img src="https://via.placeholder.com/160x160/dddddd/555555?text=Sponsor+3" alt="Sponsor 3">
+                            </div>
+                            <div class="sponsor-item">
+                                <img src="https://via.placeholder.com/160x160/dddddd/555555?text=Sponsor+4" alt="Sponsor 4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer id="colophon" role="contentinfo">
+            <div class="socialFooter">
+                <div class="social-icons">
+                    <a href="#" title="Email"><i>@</i></a>
+                    <a href="#" title="Facebook"><i>f</i></a>
+                    <a href="#" title="Instagram"><i>ig</i></a>
+                </div>
+            </div>
+            
+            <div class="payPalImg">
+                <form action="#" method="post">
+                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                </form>
+                <strong>Mailing Address: PO Box 123, Manteca, California 95337</strong>
+                <br>
+                <div class="footerStyle">
+                    Friends of Manteca Animal Shelter is a 501(c)(3) organization that relies on your donations to continue to save companion animals. We are a 100% donor supported and we thank you for helping us make a difference, one animal at a time.<br>
+                    <strong>Tax ID# XX-XXXXXXX</strong>
+                </div>
+            </div>
+            
+            <div class="privacyPolicyFtr">
+                <a href="#">FRIENDS OF MANTECA ANIMAL SHELTER PRIVACY POLICY</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
