@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Available Animals - Friends of Manteca Animal Shelter</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #0a5879;
+            --primary-dark: #084761;
+            --secondary-color: #27ae60;
+            --light-gray: #f8f8f8;
+            --border-color: #e0e0e0;
+            --text-color: #444;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #fff;
+        }
+        
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            margin: 0.5em 0;
+            color: var(--primary-color);
+        }
+        
+        h2 {
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Header Styles */
+        .logoAndAddress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logoAndAddress img {
+            max-width: 400px;
+            height: auto;
+        }
+        
+        .addressInHeader {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .textInside {
+            text-align: right;
+            line-height: 1.5;
+            margin-top: 10px;
+        }
+        
+        .socialIcons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .socialIcon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .socialIcon img {
+            width: 24px;
+            height: 24px;
+        }
+        
+        /* Navigation */
+        #masthead {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .main-navigation {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            padding: 15px;
+            cursor: pointer;
+        }
+        
+        .mega-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .mega-menu-item {
+            position: relative;
+        }
+        
+        .mega-menu-item a {
+            display: block;
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .mega-menu-item a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .mega-menu-item:hover .mega-sub-menu {
+            display: block;
+        }
+        
+        .mega-sub-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 100;
+            min-width: 200px;
+            list-style: none;
+            padding: 0;
+        }
+        
+        .mega-sub-menu li a {
+            color: var(--text-color);
+            padding: 10px 20px;
+        }
+        
+        .mega-sub-menu li a:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .mega-indicator {
+            margin-left: 5px;
+        }
+        
+        /* Page Title */
+        .page-title {
+            background-color: var(--light-gray);
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .page-title h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 32px;
+        }
+        
+        /* Animals Grid */
+        .animals-container {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 15px;
+        }
+        
+        .animals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .animal-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .animal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .animal-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .animal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .animal-card:hover .animal-image img {
+            transform: scale(1.05);
+        }
+        
+        .animal-info {
+            padding: 20px;
+        }
+        
+        .animal-info h3 {
+            margin-top: 0;
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+        
+        .animal-meta {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #777;
+        }
+        
+        .animal-meta span {
+            display: inline-block;
+            margin-right: 15px;
+        }
+        
+        .animal-description {
+            margin-bottom: 15px;
+        }
+        
+        .animal-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .animal-link:hover {
+            background-color: var(--primary-dark);
+            text-decoration: none;
+        }
+        
+        /* Filter Bar */
+        .filter-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            margin-right: 5px;
+        }
+        
+        .filter-select {
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: white;
+            font-size: 14px;
+        }
+        
+        .search-box {
+            display: flex;
+        }
+        
+        .search-input {
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px 0 0 4px;
+            font-size: 14px;
+            width: 200px;
+        }
+        
+        .search-button {
+            padding: 8px 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .search-button:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Adoption Process */
+        .adoption-process {
+            background-color: var(--light-gray);
+            padding: 40px 0;
+            margin: 50px 0;
+        }
+        
+        .adoption-steps {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+        
+        .adoption-step {
+            text-align: center;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto 15px;
+        }
+        
+        .adoption-step h3 {
+            margin-bottom: 10px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin: 50px auto;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .cta-section h2 {
+            margin-bottom: 20px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .cta-button {
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            text-decoration: none;
+        }
+        
+        /* Footer */
+        #colophon {
+            background-color: var(--light-gray);
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .socialFooter {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+        
+        .payPalImg {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 80%;
+        }
+        
+        .footerStyle {
+            font-size: 0.9em;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .privacyPolicyFtr {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logoAndAddress {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .addressInHeader {
+                align-items: center;
+                margin-top: 15px;
+            }
+            
+            .textInside {
+                text-align: center;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .mega-menu {
+                display: none;
+                flex-direction: column;
+            }
+            
+            .mega-menu.active {
+                display: flex;
+            }
+            
+            .mega-sub-menu {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                display: none;
+            }
+            
+            .mega-menu-item:hover .mega-sub-menu {
+                display: none;
+            }
+            
+            .filter-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .filter-group {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .search-box {
+                width: 100%;
+            }
+            
+            .search-input {
+                flex: 1;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .cta-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="page" class="hfeed site">
+        <!-- Header -->
+        <div class="logoAndAddress">
+            <a href="index.html">
+                <img src="https://via.placeholder.com/400x100/0a5879/ffffff?text=Friends+of+Manteca+Animal+Shelter" alt="Friends of Manteca Animal Shelter Logo">
+            </a>
+            <div class="addressInHeader">
+                <div class="socialIcons">
+                    <a href="#" class="socialIcon" title="Email">
+                        <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email">
+                    </a>
+                    <a href="#" class="socialIcon" title="Facebook">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+                    </a>
+                    <a href="#" class="socialIcon" title="Instagram">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+                    </a>
+                </div>
+                <div class="textInside">
+                    <br>
+                    <strong>Mailing Address</strong>
+                    <br>
+                    PO Box 123<br>Manteca, California 95337
+                </div>
+            </div>
+        </div>
+        
+        <header id="masthead" class="site-header" role="banner">
+            <nav id="site-navigation" class="main-navigation" role="navigation">
+                <button class="menu-toggle">Menu</button>
+                <ul class="mega-menu">
+                    <li class="mega-menu-item">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="mega-menu-item mega-menu-item-has-children mega-current-menu-item">
+                        <a href="#">Animals <span class="mega-indicator">▼</span></a>
+                        <ul class="mega-sub-menu">
+                            <li><a href="#">Available Dogs</a></li>
+                            <li><a href="#">Available Cats</a></li>
+                            <li><a href="#">Adoption Application – Dogs</a></li>
+                            <li><a href="#">Adoption Application – Cats</a></li>
+                            <li><a href="#">Adoption Fees</a></li>
+                            <li><a href="#">Adoption FAQs</a></li>
+                            <li><a href="#">Animal Surrender</a></li>
+                        </ul>
+                    </li>
+                    <li class="mega-menu-item mega-menu-item-has-children">
+                        <a href="about.html">About Us <span class="mega-indicator">▼</span></a>
+                        <ul class="mega-sub-menu">
+                            <li><a href="#">Meet the Team</a></li>
+                            <li><a href="#">Our Awards</a></li>
+                            <li><a href="#">What's New</a></li>
+                        </ul>
+                    </li>
+                    <li class="mega-menu-item mega-menu-item-has-children">
+                        <a href="#">Our Programs <span class="mega-indicator">▼</span></a>
+                        <ul class="mega-sub-menu">
+                            <li><a href="#">Spay & Neuter Programs</a></li>
+                            <li><a href="#">Volunteer Programs</a></li>
+                            <li><a href="#">Annual Reports and Statistics</a></li>
+                        </ul>
+                    </li>
+                    <li class="mega-menu-item mega-menu-item-has-children">
+                        <a href="#">Get Involved <span class="mega-indicator">▼</span></a>
+                        <ul class="mega-sub-menu">
+                            <li><a href="#">Volunteer Application</a></li>
+                            <li><a href="#">Foster Application</a></li>
+                            <li><a href="#">Plan An Event</a></li>
+                        </ul>
+                    </li>
+                    <li class="mega-menu-item mega-menu-item-has-children">
+                        <a href="#">Donations <span class="mega-indicator">▼</span></a>
+                        <ul class="mega-sub-menu">
+                            <li><a href="#">Donate Now</a></li>
+                            <li><a href="#">Donate Your Car</a></li>
+                            <li><a href="#">More Ways to Support</a></li>
+                        </ul>
+                    </li>
+                    <li class="mega-menu-item mega-menu-item-has-children">
+                        <a href="#">Events <span class="mega-indicator">▼</span></a>
+                        <ul class="mega-sub-menu">
+                            <li><a href="#">Current Events</a></li>
+                            <li><a href="#">Past Events</a></li>
+                        </ul>
+                    </li>
+                    <li class="mega-menu-item">
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <!-- Page Title -->
+        <div class="page-title">
+            <div class="wrapper">
+                <h1>Available Animals</h1>
+            </div>
+        </div>
+        
+        <div class="animals-container">
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <div>
+                        <span class="filter-label">Animal Type:</span>
+                        <select class="filter-select">
+                            <option value="all">All Animals</option>
+                            <option value="dogs">Dogs</option>
+                            <option value="cats">Cats</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="filter-label">Age:</span>
+                        <select class="filter-select">
+                            <option value="all">All Ages</option>
+                            <option value="puppy-kitten">Puppy/Kitten</option>
+                            <option value="young">Young</option>
+                            <option value="adult">Adult</option>
+                            <option value="senior">Senior</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="filter-label">Size:</span>
+                        <select class="filter-select">
+                            <option value="all">All Sizes</option>
+                            <option value="small">Small</option>
+                            <option value="medium">Medium</option>
+                            <option value="large">Large</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search by name...">
+                    <button type="button" class="search-button">Search</button>
+                </div>
+            </div>
+            
+            <!-- Animals Grid -->
+            <div class="animals-grid">
+                <!-- Animal Card 1 -->
+                <div class="animal-card">
+                    <div class="animal-image">
+                        <img src="https://via.placeholder.com/300x250/cccccc/666666?text=Max" alt="Max - Labrador Retriever">
+                    </div>
+                    <div class="animal-info">
+                        <h3>Max</h3>
+                        <div class="animal-meta">
+                            <span>Labrador Retriever</span>
+                            <span>Male</span>
+                            <span>2 years</span>
+                        </div>
+                        <p class="animal-description">Max is a friendly and energetic Labrador who loves to play fetch and go for long walks. He's great with children and other dogs.</p>
+                        <a href="#" class="animal-link">Meet Max</a>
+                    </div>
+                </div>
+                
+                <!-- Animal Card 2 -->
+                <div class="animal-card">
+                    <div class="animal-image">
+                        <img src="https://via.placeholder.com/300x250/cccccc/666666?text=Bella" alt="Bella - Domestic Shorthair">
+                    </div>
+                    <div class="animal-info">
+                        <h3>Bella</h3>
+                        <div class="animal-meta">
+                            <span>Domestic Shorthair</span>
+                            <span>Female</span>
+                            <span>1 year</span>
+                        </div>
+                        <p class="animal-description">Bella is a sweet and affectionate cat who loves to cuddle and play with toys. She's litter box trained and good with other cats.</p>
+                        <a href="#" class="animal-link">Meet Bella</a>
+                    </div>
+                </div>
+                
+                <!-- Animal Card 3 -->
+                <div class="animal-card">
+                    <div class="animal-image">
+                        <img src="https://via.placeholder.com/300x250/cccccc/666666?text=Charlie" alt="Charlie - Border Collie Mix">
+                    </div>
+                    <div class="animal-info">
+                        <h3>Charlie</h3>
+                        <div class="animal-meta">
+                            <span>Border Collie Mix</span>
+                            <span>Male</span>
+                            <span>3 years</span>
+                        </div>
+                        <p class="animal-description">Charlie is an intelligent and active dog who would thrive in a home that can provide plenty of exercise and mental stimulation.</p>
+                        <a href="#" class="animal-link">Meet Charlie</a>
+                    </div>
+                </div>
+                
+                <!-- Animal Card 4 -->
+                <div class="animal-card">
+                    <div class="animal-image">
+                        <img src="https://via.placeholder.com/300x250/cccccc/666666?text=Luna" alt="Luna - Domestic Longhair">
+                    </div>
+                    <div class="animal-info">
+                        <h3>Luna</h3>
+                        <div class="animal-meta">
+                            <span>Domestic Longhair</span>
+                            <span>Female</span>
+                            <span>5 years</span>
+                        </div>
+                        <p class="animal-description">Luna is a gentle and calm cat who enjoys peaceful environments. She loves to lounge in sunny spots and be petted.</p>
+                        <a href="#" class="animal-link">Meet Luna</a>
+                    </div>
+                </div>
+                
+                <!-- Animal Card 5 -->
+                <div class="animal-card">
+                    <div class="animal-image">
+                        <img src="https://via.placeholder.com/300x250/cccccc/666666?text=Rocky" alt="Rocky - Pit Bull Terrier">
+                    </div>
+                    <div class="animal-info">
+                        <h3>Rocky</h3>
+                        <div class="animal-meta">
+                            <span>Pit Bull Terrier</span>
+                            <span>Male</span>
+                            <span>4 years</span>
+                        </div>
+                        <p class="animal-description">Rocky is a loyal and affectionate dog who loves people. He's well-trained and would make a great companion for an active family.</p>
+                        <a href="#" class="animal-link">Meet Rocky</a>
+                    </div>
+                </div>
+                
+                <!-- Animal Card 6 -->
+                <div class="animal-card">
+                    <div class="animal-image">
+                        <img src="https://via.placeholder.com/300x250/cccccc/666666?text=Daisy" alt="Daisy - Beagle">
+                    </div>
+                    <div class="animal-info">
+                        <h3>Daisy</h3>
+                        <div class="animal-meta">
+                            <span>Beagle</span>
+                            <span>Female</span>
+                            <span>6 years</span>
+                        </div>
+                        <p class="animal-description">Daisy is a friendly and curious Beagle who loves to explore. She gets along well with other dogs and would love a home with a yard.</p>
+                        <a href="#" class="animal-link">Meet Daisy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Adoption Process Section -->
+        <section class="adoption-process">
+            <h2>Our Adoption Process</h2>
+            <div class="adoption-steps">
+                <div class="adoption-step">
+                    <div class="step-number">1</div>
+                    <h3>Browse Available Animals</h3>
+                    <p>Look through our listings of dogs and cats currently available for adoption.</p>
+                </div>
+                <div class="adoption-step">
+                    <div class="step-number">2</div>
+                    <h3>Submit Application</h3>
+                    <p>Fill out our adoption application form for the animal you're interested in.</p>
+                </div>
+                <div class="adoption-step">
+                    <div class="step-number">3</div>
+                    <h3>Meet & Greet</h3>
+                    <p>Schedule a time to meet your potential new family member in person.</p>
+                </div>
+                <div class="adoption-step">
+                    <div class="step-number">4</div>
+                    <h3>Home Check</h3>
+                    <p>We may conduct a brief home check to ensure it's suitable for the animal.</p>
+                </div>
+                <div class="adoption-step">
+                    <div class="step-number">5</div>
+                    <h3>Adoption Day</h3>
+                    <p>Complete the adoption paperwork, pay the fee, and welcome your new pet home!</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Ready to Add a New Family Member?</h2>
+            <p>Our animals are waiting for their forever homes. By adopting, you're not just gaining a companion - you're saving a life.</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-button">Adoption Application - Dogs</a>
+                <a href="#" class="cta-button">Adoption Application - Cats</a>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer id="colophon" role="contentinfo">
+            <div class="socialFooter">
+                <div class="socialIcons">
+                    <a href="#" class="socialIcon" title="Email">
+                        <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email">
+                    </a>
+                    <a href="#" class="socialIcon" title="Facebook">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+                    </a>
+                    <a href="#" class="socialIcon" title="Instagram">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+                    </a>
+                </div>
+            </div>
+            
+            <div class="payPalImg">
+                <form action="#" method="post">
+                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                </form>
+                <strong>Mailing Address: PO Box 123, Manteca, California 95337</strong>
+                <br>
+                <div class="footerStyle">
+                    Friends of Manteca Animal Shelter is a 501(c)(3) organization that relies on your donations to continue to save companion animals. We are a 100% donor supported and we thank you for helping us make a difference, one animal at a time.<br>
+                    <strong>Tax ID# XX-XXXXXXX</strong>
+                </div>
+            </div>
+            
+            <div class="privacyPolicyFtr">
+                <a href="#">FRIENDS OF MANTECA ANIMAL SHELTER PRIVACY POLICY</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Simple mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const megaMenu = document.querySelector('.mega-menu');
+            
+            menuToggle.addEventListener('click', function() {
+                megaMenu.classList.toggle('active');
+            });
+            
+            // Handle submenu toggle on mobile
+            const hasChildrenItems = document.querySelectorAll('.mega-menu-item-has-children > a');
+            
+            hasChildrenItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        const subMenu = this.nextElementSibling;
+                        const isOpen = subMenu.style.display === 'block';
+                        
+                        // Close all other open submenus
+                        document.querySelectorAll('.mega-sub-menu').forEach(menu => {
+                            menu.style.display = 'none';
+                        });
+                        
+                        // Toggle current submenu
+                        subMenu.style.display = isOpen ? 'none' : 'block';
+                    }
+                });
+            });
+        });
