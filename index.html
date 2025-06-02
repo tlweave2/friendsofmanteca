@@ -77,21 +77,31 @@
             padding: 0;
         }
         
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--black);
-        }
-        
-        .logo-img {
-            width: 250px;
-            height: 250px;
-            margin-right: 15px;
-            object-fit: contain;
-            display: block;
-        }
+       .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--black);
+    gap: 15px; /* Add gap between images */
+}
+
+/* Keep the first logo image the same */
+.logo-img {
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Make the second logo image bigger */
+.logo-img-large {
+    width: 500px;  /* 20% bigger than the first image */
+    height: 300px; /* 20% bigger than the first image */
+    object-fit: contain;
+    display: block;
+}
+
         
         .contact-info {
             text-align: right;
@@ -452,65 +462,83 @@
         
         /* Responsive Design */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-                padding: 1rem 0;
-            }
-            
-            .contact-info {
-                text-align: center;
-            }
-            
-            .social-icons {
-                justify-content: center;
-            }
-            
-            .menu-toggle {
-                display: block;
-            }
-            
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            .nav-menu.active {
-                display: flex;
-            }
-            
-            .nav-dropdown {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                background-color: var(--light-gray);
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .newsletter-form {
-                flex-direction: column;
-                border-radius: 10px;
-            }
-            
-            .newsletter-form input {
-                border-radius: 10px 10px 0 0;
-            }
-            
-            .newsletter-form button {
-                border-radius: 0 0 10px 10px;
-            }
-        }
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+       
+        padding: 1rem 0;
+    }
+    
+    /* Stack logo images vertically on mobile */
+    .logo {
+        flex-direction: column;
+        align-items: center;
+        gap: 1px;
+    }
+    
+    /* Make both images smaller on mobile */
+    .logo-img {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .logo-img-large {
+        width: 200px;  /* Still slightly bigger than first image */
+        height: 50px;
+    }
+    
+    .contact-info {
+        text-align: center;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .nav-dropdown {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        background-color: var(--light-gray);
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+        border-radius: 10px;
+    }
+    
+    .newsletter-form input {
+        border-radius: 10px 10px 0 0;
+    }
+    
+    .newsletter-form button {
+        border-radius: 0 0 10px 10px;
+    }
+}
     </style>
 </head>
 <body>
@@ -519,9 +547,9 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="img/fomas.png" alt="Friends of Manteca Animal Shelter Logo" class="logo-img">
-                    <span><img src="img/fomas2.png" alt="Friends of Manteca Animal Shelter Logo" class="logo-img"></span>
-                </div>
+    <img src="img/fomas.png" alt="Friends of Manteca Animal Shelter Logo" class="logo-img">
+    <img src="img/fomas2.png" alt="Friends of Manteca Animal Shelter Logo" class="logo-img-large">
+</div>
                 <div class="contact-info">
                     <div class="social-icons">
                         <a href="#" class="social-icon" title="Email">@</a>
