@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Donate - Friends of Manteca Animal Shelter</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #df9588;
+            --primary-dark: #c57b6d;
+            --background-color: #9f9a9a;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --black: #000000;
+            --text-dark: #333333;
+            --border-color: #d0d0d0;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--background-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--primary-dark);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            margin: 0.5em 0;
+            color: var(--black);
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Header and Navigation styles */
+        .header {
+            background-color: var(--background-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--black);
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 250px;
+            height: 250px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .logo-img-large {
+            width: 500px;
+            height: 300px;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .contact-info {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--white);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            justify-content: flex-end;
+        }
+        
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .nav {
+            background-color: var(--black);
+        }
+        
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            display: block;
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover,
+        .nav-item.active .nav-link {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .nav-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            min-width: 220px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .nav-item:hover .nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .nav-dropdown a {
+            display: block;
+            color: var(--text-dark);
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .nav-dropdown a:hover {
+            background-color: var(--light-gray);
+            color: var(--primary-color);
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Content Sections */
+        .section {
+            background-color: var(--white);
+            margin: 2rem 0;
+            padding: 3rem 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .section-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Donation Form Styles */
+        .donation-intro {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        
+        .donation-intro p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .tax-id {
+            background: #e8f5e8;
+            border-left: 5px solid #27ae60;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+        
+        .donation-form {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+        
+        .form-section {
+            margin-bottom: 2rem;
+        }
+        
+        .form-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .amount-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .amount-option {
+            position: relative;
+        }
+        
+        .amount-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
+        .amount-label {
+            display: block;
+            padding: 12px 8px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+        
+        .amount-option input[type="radio"]:checked + .amount-label {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+        
+        .custom-amount {
+            margin-top: 1rem;
+        }
+        
+        .custom-amount input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .radio-option input[type="radio"] {
+            width: auto;
+        }
+        
+        .donation-total {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 1.5rem 0;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .security-notice {
+            background: #e3f2fd;
+            border: 1px solid #bbdefb;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #1565c0;
+        }
+        
+        .mailing-info {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            color: #856404;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            text-align: center;
+        }
+        
+        .footer-social {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-info {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-info p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem 0;
+            }
+            
+            .logo {
+                flex-direction: column;
+                align-items: center;
+                gap: 1px;
+            }
+            
+            .logo-img {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .logo-img-large {
+                width: 200px;
+                height: 50px;
+            }
+            
+            .contact-info {
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background-color: var(--light-gray);
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .amount-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="img/fomas.png" alt="Friends of Manteca Animal Shelter Logo" class="logo-img">
+                    <img src="img/fomas2.png" alt="Friends of Manteca Animal Shelter Logo" class="logo-img-large">
+                </div>
+                <div class="contact-info">
+                    <div class="social-icons">
+                        <a href="mailto:info@fomashelter.org" class="social-icon" title="Email">@</a>
+                        <a href="https://facebook.com/fomashelter" class="social-icon" title="Facebook">f</a>
+                        <a href="https://instagram.com/fomashelter" class="social-icon" title="Instagram">ig</a>
+                    </div>
+                    <strong>Mailing Address</strong><br>
+                    PO Box 123, Manteca, CA 95337
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <button class="menu-toggle">☰</button>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="animals.html" class="nav-link">Animals</a>
+                    <div class="nav-dropdown">
+                        <a href="animals.html">Available Dogs</a>
+                        <a href="animals.html">Available Cats</a>
+                        <a href="adoption-application.html">Adoption Application</a>
+                        <a href="adoption-fees.html">Adoption Fees</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="aboutus.html" class="nav-link">About Us</a>
+                    <div class="nav-dropdown">
+                        <a href="aboutus.html#team">Meet the Team</a>
+                        <a href="aboutus.html#mission">Our Mission</a>
+                        <a href="aboutus.html#history">Our History</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="programs.html" class="nav-link">Programs</a>
+                    <div class="nav-dropdown">
+                        <a href="spay-neuter.html">Spay & Neuter</a>
+                        <a href="volunteer.html">Volunteer Programs</a>
+                        <a href="foster.html">Foster Program</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="get-involved.html" class="nav-link">Get Involved</a>
+                </li>
+                <li class="nav-item active">
+                    <a href="donate.html" class="nav-link">Donate</a>
+                </li>
+                <li class="nav-item">
+                    <a href="events.html" class="nav-link">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Donations</h1>
+            <p>Your support makes it possible for us to make a difference, one animal at a time.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Donation Section -->
+        <section class="section">
+            <div class="section-content">
+                <div class="donation-intro">
+                    <p><strong>Friends of Manteca Animal Shelter</strong> is a volunteer led 501(c)(3) non-profit animal rescue that is entirely funded by the financial support of our generous donors and the dedication of time from our volunteers. With your support we are able to rescue more animals, work toward reducing the pet overpopulation problem through our Affordable Spay & Neuter program, and work with severely injured and ill animals who are out of options through our emergency medical care programs.</p>
+                    
+                    <p>We are so thankful to our incredible community that has come together year after year to make it possible for us to rescue, rehabilitate, and rehome animals in need. We could not do it without your support. Thank you!</p>
+                    
+                    <p>Donate a tax-deductible amount that is right for you! Your support is crucial to ensuring Friends of Manteca Animal Shelter has a strong foundation to support the good work we continue to do! We are so deeply grateful for your support!</p>
+                    
+                    <div class="tax-id">
+                        <strong>Tax ID# XX-XXXXXXX</strong>
+                    </div>
+                    
+                    <div class="mailing-info">
+                        <strong>Note:</strong> If you would like to make your payment with a check or cashiers check, our mailing address is: <strong>Friends of Manteca Animal Shelter, PO Box 123, Manteca, CA 95337</strong>
+                    </div>
+                </div>
+
+                <!-- Donation Form -->
+                <form class="donation-form" id="donationForm">
+                    <!-- Amount Selection -->
+                    <div class="form-section">
+                        <div class="amount-grid">
+                            <div class="amount-option">
+                                <input type="radio" id="amount-25" name="amount" value="25.00" checked>
+                                <label for="amount-25" class="amount-label">$25.00</label>
+                            </div>
+                            <div class="amount-option">
+                                <input type="radio" id="amount-50" name="amount" value="50.00">
+                                <label for="amount-50" class="amount-label">$50.00</label>
+                            </div>
+                            <div class="amount-option">
+                                <input type="radio" id="amount-100" name="amount" value="100.00">
+                                <label for="amount-100" class="amount-label">$100.00</label>
+                            </div>
+                            <div class="amount-option">
+                                <input type="radio" id="amount-250" name="amount" value="250.00">
+                                <label for="amount-250" class="amount-label">$250.00</label>
+                            </div>
+                            <div class="amount-option">
+                                <input type="radio" id="amount-300" name="amount" value="300.00">
+                                <label for="amount-300" class="amount-label">$300.00</label>
+                            </div>
+                            <div class="amount-option">
+                                <input type="radio" id="amount-400" name="amount" value="400.00">
+                                <label for="amount-400" class="amount-label">$400.00</label>
+                            </div>
+                            <div class="amount-option">
+                                <input type="radio" id="amount-500" name="amount" value="500.00">
+                                <label for="amount-500" class="amount-label">$500.00</label>
+                            </div>
+                            <div class="amount-option">
+                                <input type="radio" id="amount-custom" name="amount" value="custom">
+                                <label for="amount-custom" class="amount-label">Custom Amount</label>
+                            </div>
+                        </div>
+                        
+                        <div class="custom-amount" id="customAmountSection" style="display: none;">
+                            <input type="number" id="customAmount" placeholder="Enter custom amount" min="1" step="0.01">
+                        </div>
+                    </div>
+
+                    <!-- Recurring Donation -->
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label>Make this donation every:</label>
+                            <select name="frequency" id="frequency">
+                                <option value="once">One-time donation</option>
+                                <option value="weekly">Week</option>
+                                <option value="monthly">Month</option>
+                                <option value="quarterly">Quarter</option>
+                                <option value="yearly">Year</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Dedication -->
+                    <div class="form-section">
+                        <h3>Dedicate this Donation</h3>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="dedicate-yes" name="dedicate" value="yes">
+                                <label for="dedicate-yes">Yes, please</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="dedicate-no" name="dedicate" value="no" checked>
+                                <label for="dedicate-no">No, thank you</label>
+                            </div>
+                        </div>
+                        
+                        <div id="dedicationDetails" style="display: none; margin-top: 1rem;">
+                            <div class="form-group">
+                                <label for="dedicationText">Dedication message:</label>
+                                <input type="text" id="dedicationText" name="dedicationText" placeholder="In memory of... / In honor of...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Info -->
+                    <div class="form-section">
+                        <h3>Personal Info</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="anonymous" name="anonymous">
+                            <label for="anonymous">Make this an anonymous donation.</label>
+                        </div>
+                    </div>
+
+                    <!-- Credit Card Info -->
+                    <div class="form-section">
+                        <h3>Credit Card Info</h3>
+                        <div class="security-notice">
+                            🔒 This is a secure SSL encrypted payment.
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number *</label>
+                            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiryDate">Expiry Date *</label>
+                                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV *</label>
+                                <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cardName">Name on Card *</label>
+                            <input type="text" id="cardName" name="cardName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="billingAddress">Billing Address *</label>
+                            <input type="text" id="billingAddress" name="billingAddress" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State *</label>
+                                <select id="state" name="state" required>
+                                    <option value="">Select State</option>
+                                    <option value="CA">California</option>
+                                    <option value="AL">Alabama</option>
+                                    <option value="AK">Alaska</option>
+                                    <!-- Add more states as needed -->
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="zipCode">ZIP Code *</label>
+                            <input type="text" id="zipCode" name="zipCode" required>
+                        </div>
+                    </div>
+
+                    <!-- Donation Total -->
+                    <div class="donation-total">
+                        Donation Total: $<span id="donationTotal">25.00</span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn">💝 Complete Donation</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer Info -->
+        <section class="section">
+            <div class="section-content">
+                <div style="text-align: center; color: var(--text-dark);">
+                    <p style="font-weight: bold; margin-bottom: 1rem;">Mailing Address: PO Box 123, Manteca, California 95337</p>
+                    <p style="margin-bottom: 1rem;">Friends of Manteca Animal Shelter is a 501(c)(3) organization that relies on your donations to continue to save companion animals. We are 100% donor supported and we thank you for helping us make a difference, one animal at a time.</p>
+                    <p style="font-weight: bold; color: var(--primary-color);">Tax ID# XX-XXXXXXX</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-social">
+                    <div class="social-icons" style="justify-content: center;">
+                        <a href="mailto:info@fomashelter.org" class="social-icon" title="Email">@</a>
+                        <a href="https://facebook.com/fomashelter" class="social-icon" title="Facebook">f</a>
+                        <a href="https://instagram.com/fomashelter" class="social-icon" title="Instagram">ig</a>
+                    </div>
+                </div>
+                
+                <div class="footer-info">
+                    <p><strong>FRIENDS OF MANTECA ANIMAL SHELTER PRIVACY POLICY</strong></p>
+                    <p>We respect your privacy and will never share your personal information with third parties.</p>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p><a href="privacy-policy.html" style="color: var(--primary-color);">Privacy Policy</a> | © 2025 Friends of Manteca Animal Shelter</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav')) {
+                    navMenu.classList.remove('active');
+                }
+            });
+
+            // Handle amount selection
+            const amountRadios = document.querySelectorAll('input[name="amount"]');
+            const customAmountSection = document.getElementById('customAmountSection');
+            const customAmountInput = document.getElementById('customAmount');
+            const donationTotal = document.getElementById('donationTotal');
+
+            amountRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'custom') {
+                        customAmountSection.style.display = 'block';
+                        customAmountInput.focus();
+                        updateTotal(customAmountInput.value || '0');
+                    } else {
+                        customAmountSection.style.display = 'none';
+                        updateTotal(this.value);
+                    }
+                });
+            });
+
+            customAmountInput.addEventListener('input', function() {
+                updateTotal(this.value || '0');
+            });
+
+            function updateTotal(amount) {
+                const total = parseFloat(amount) || 0;
+                donationTotal.textContent = total.toFixed(2);
+            }
+
+            // Handle dedication toggle
+            const dedicateRadios = document.querySelectorAll('input[name="dedicate"]');
+            const dedicationDetails = document.getElementById('dedicationDetails');
+
+            dedicateRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'yes') {
+                        dedicationDetails.style.display = 'block';
+                    } else {
+                        dedicationDetails.style.display = 'none';
+                    }
+                });
+            });
+
+            // Form submission
+            document.getElementById('donationForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get the donation amount
+                const selectedAmount = document.querySelector('input[name="amount"]:checked');
+                let amount = 0;
+                
+                if (selectedAmount.value === 'custom') {
+                    amount = parseFloat(customAmountInput.value) || 0;
+                } else {
+                    amount = parseFloat(selectedAmount.value);
+                }
+                
+                if (amount <= 0) {
+                    alert('Please select a valid donation amount.');
+                    return;
+                }
+                
+                // In a real implementation, this would process the payment
+                alert(`Thank you for your generous donation of $${amount.toFixed(2)}!\n\nIn a live website, this would securely process your payment and send you a tax-deductible receipt.\n\nYour support helps us continue saving animals in need.`);
+            });
+
+            // Format card number input
+            const cardNumberInput = document.getElementById('cardNumber');
+            cardNumberInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+                let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                e.target.value = formattedValue;
+            });
+
+            // Format expiry date input
+            const expiryInput = document.getElementById('expiryDate');
+            expiryInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length >= 2) {
+                    value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                }
+                e.target.value = value;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -16,6 +16,20 @@
             --text-dark: #333333;
             --border-color: #d0d0d0;
         }
+
+        // Download DDO Form function
+        function downloadDDOForm() {
+            // Create a link element and trigger download
+            const link = document.createElement('a');
+            link.href = 'documents/doggy-day-out-form.pdf';
+            link.download = 'Doggy-Day-Out-Form.pdf';
+            link.target = '_blank';
+            
+            // Trigger the download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
         
         * {
             box-sizing: border-box;
@@ -67,7 +81,6 @@
         .header {
             background-color: var(--background-color);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-          
         }
         
         .header-content {
@@ -77,31 +90,28 @@
             padding: 0;
         }
         
-       .logo {
-    display: flex;
-    align-items: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--black);
-    gap: 15px; /* Add gap between images */
-}
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--black);
+            gap: 15px;
+        }
 
-/* Keep the first logo image the same */
-.logo-img {
-    width: 250px;
-    height: 250px;
-    object-fit: contain;
-    display: block;
-}
+        .logo-img {
+            width: 250px;
+            height: 250px;
+            object-fit: contain;
+            display: block;
+        }
 
-/* Make the second logo image bigger */
-.logo-img-large {
-    width: 500px;  /* 20% bigger than the first image */
-    height: 300px; /* 20% bigger than the first image */
-    object-fit: contain;
-    display: block;
-}
-
+        .logo-img-large {
+            width: 500px;
+            height: 300px;
+            object-fit: contain;
+            display: block;
+        }
         
         .contact-info {
             text-align: right;
@@ -643,88 +653,85 @@
         
         /* Responsive Design */
         @media (max-width: 768px) {
-    .header-content {
-        flex-direction: column;
-        text-align: center;
-       
-        padding: 1rem 0;
-    }
-    
-    /* Stack logo images vertically on mobile */
-    .logo {
-        flex-direction: column;
-        align-items: center;
-        gap: 1px;
-    }
-    
-    /* Make both images smaller on mobile */
-    .logo-img {
-        width: 180px;
-        height: 180px;
-    }
-    
-    .logo-img-large {
-        width: 200px;  /* Still slightly bigger than first image */
-        height: 50px;
-    }
-    
-    .contact-info {
-        text-align: center;
-    }
-    
-    .social-icons {
-        justify-content: center;
-    }
-    
-    .menu-toggle {
-        display: block;
-    }
-    
-    .nav-menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-    }
-    
-    .nav-menu.active {
-        display: flex;
-    }
-    
-    .nav-dropdown {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        box-shadow: none;
-        background-color: var(--light-gray);
-    }
-    
-    .hero h1 {
-        font-size: 2rem;
-    }
-    
-    .hero p {
-        font-size: 1rem;
-    }
-    
-    .animals-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1.5rem;
-    }
-    
-    .newsletter-form {
-        flex-direction: column;
-        border-radius: 10px;
-    }
-    
-    .newsletter-form input {
-        border-radius: 10px 10px 0 0;
-    }
-    
-    .newsletter-form button {
-        border-radius: 0 0 10px 10px;
-    }
-}
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem 0;
+            }
+            
+            .logo {
+                flex-direction: column;
+                align-items: center;
+                gap: 1px;
+            }
+            
+            .logo-img {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .logo-img-large {
+                width: 200px;
+                height: 50px;
+            }
+            
+            .contact-info {
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background-color: var(--light-gray);
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .animals-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                border-radius: 10px;
+            }
+            
+            .newsletter-form input {
+                border-radius: 10px 10px 0 0;
+            }
+            
+            .newsletter-form button {
+                border-radius: 0 0 10px 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -733,14 +740,14 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-    <img src="img/fomas.png" alt="Friends of Manteca Animal Shelter Logo" class="logo-img">
-    <img src="img/fomas2.png" alt="Friends of Manteca Animal Shelter Logo" class="logo-img-large">
-</div>
+                    <img src="img/fomas.png" alt="Friends of Manteca Animal Shelter Logo" class="logo-img">
+                    <img src="img/fomas2.png" alt="Friends of Manteca Animal Shelter Logo" class="logo-img-large">
+                </div>
                 <div class="contact-info">
                     <div class="social-icons">
-                        <a href="#" class="social-icon" title="Email">@</a>
-                        <a href="#" class="social-icon" title="Facebook">f</a>
-                        <a href="#" class="social-icon" title="Instagram">ig</a>
+                        <a href="mailto:info@fomashelter.org" class="social-icon" title="Email">@</a>
+                        <a href="https://facebook.com/fomashelter" class="social-icon" title="Facebook">f</a>
+                        <a href="https://instagram.com/fomashelter" class="social-icon" title="Instagram">ig</a>
                     </div>
                     <strong>Mailing Address</strong><br>
                     PO Box 123, Manteca, CA 95337
@@ -755,44 +762,44 @@
             <button class="menu-toggle">☰</button>
             <ul class="nav-menu">
                 <li class="nav-item active">
-                    <a href="#" class="nav-link">Home</a>
+                    <a href="index.html" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
                     <a href="animals.html" class="nav-link">Animals</a>
                     <div class="nav-dropdown">
-                        <a href="#">Available Dogs</a>
-                        <a href="#">Available Cats</a>
-                        <a href="#">Adoption Application</a>
-                        <a href="#">Adoption Fees</a>
+                        <a href="animals.html">Available Dogs</a>
+                        <a href="animals.html">Available Cats</a>
+                        <a href="adoption-application.html">Adoption Application</a>
+                        <a href="adoption-fees.html">Adoption Fees</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">About Us</a>
+                    <a href="aboutus.html" class="nav-link">About Us</a>
                     <div class="nav-dropdown">
-                        <a href="#">Meet the Team</a>
-                        <a href="#">Our Mission</a>
-                        <a href="#">Our History</a>
+                        <a href="aboutus.html#mission">Our Mission</a>
+                        <a href="aboutus.html#programs">Our Programs</a>
+                        <a href="aboutus.html#contact">Contact Us</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Programs</a>
+                    <a href="programs.html" class="nav-link">Programs</a>
                     <div class="nav-dropdown">
-                        <a href="#">Spay & Neuter</a>
-                        <a href="#">Volunteer Programs</a>
-                        <a href="#">Foster Program</a>
+                        <a href="spay-neuter.html">Spay & Neuter</a>
+                        <a href="volunteer.html">Volunteer Programs</a>
+                        <a href="foster.html">Foster Program</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Get Involved</a>
+                    <a href="get-involved.html" class="nav-link">Get Involved</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Donate</a>
+                    <a href="donate.html" class="nav-link">Donate</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Events</a>
+                    <a href="events.html" class="nav-link">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Contact</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
                 </li>
             </ul>
         </div>
@@ -803,7 +810,7 @@
         <div class="container">
             <h1>Making a Difference, One Animal at a Time</h1>
             <p>Supporting animals and the people who love them through rescue, rehoming, and education</p>
-            <a href="#" class="btn">Donate Now</a>
+            <a href="donate.html" class="btn">Donate Now</a>
         </div>
     </section>
 
@@ -815,7 +822,7 @@
                 <h2>About Friends of Manteca Animal Shelter</h2>
                 <p>Friends of Manteca Animal Shelter is a unique, non-profit animal-rescue organization located in Manteca, CA. We work in partnership with the Manteca Animal Shelter to support animals and the people who love them through rescue, rehoming, spay/neuter programs, and education.</p>
                 <p>Our mission is to make a positive impact on the lives of animals in our community through compassionate care, responsible rehoming, and educational outreach programs.</p>
-                <a href="#" class="btn btn-primary">Learn More About Us</a>
+                <a href="aboutus.html" class="btn btn-primary">Learn More About Us</a>
             </div>
         </section>
 
@@ -833,26 +840,72 @@
             </div>
         </section>
 
-        <!-- Stats Section -->
+        <!-- Doggy Day Out Section -->
         <section class="section stats-section">
             <div class="section-content">
-                <h2>Our Impact</h2>
+                <h2>🐕 Doggy Day Out Program</h2>
+                <p style="color: var(--white); font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+                    Give a shelter dog a break from shelter life! Take a furry friend out for a day of fun and adventure.
+                </p>
+                
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <span class="stat-number">1,200+</span>
-                        <span class="stat-label">Animals Rescued</span>
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">🚗</div>
+                        <span class="stat-label">Take a Dog Out</span>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">for walks, hikes, or car rides</p>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">950+</span>
-                        <span class="stat-label">Successful Adoptions</span>
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">❤️</div>
+                        <span class="stat-label">Reduce Stress</span>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">help dogs decompress from shelter life</p>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Spay/Neuter Procedures</span>
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">📱</div>
+                        <span class="stat-label">Share Photos</span>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">help promote dogs for adoption</p>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">150+</span>
-                        <span class="stat-label">Volunteer Hours Monthly</span>
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">🏠</div>
+                        <span class="stat-label">Find Homes</span>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">increase adoption opportunities</p>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 15px; margin-top: 2rem;">
+                    <h3 style="color: var(--white); margin-bottom: 1rem;">How It Works</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                        <div style="text-align: center;">
+                            <div style="background: var(--primary-color); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; font-weight: bold;">1</div>
+                            <p style="color: var(--white);">Fill out the Doggy Day Out form</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="background: var(--primary-color); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; font-weight: bold;">2</div>
+                            <p style="color: var(--white);">Visit Manteca Animal Shelter</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="background: var(--primary-color); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; font-weight: bold;">3</div>
+                            <p style="color: var(--white);">Choose a dog and take them out</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="background: var(--primary-color); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; font-weight: bold;">4</div>
+                            <p style="color: var(--white);">Return by 3:30 PM same day</p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <button onclick="downloadDDOForm()" style="background: var(--white); color: var(--primary-color); border: none; padding: 15px 30px; border-radius: 25px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin: 0 0.5rem; transition: all 0.3s ease;">
+                            📄 Download DDO Form
+                        </button>
+                        <a href="contact.html" style="background: rgba(255,255,255,0.2); color: var(--white); border: 2px solid var(--white); padding: 13px 30px; border-radius: 25px; font-size: 1.1rem; font-weight: bold; text-decoration: none; margin: 0 0.5rem; display: inline-block; transition: all 0.3s ease;">
+                            📞 Contact for Info
+                        </a>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 10px;">
+                        <p style="color: var(--white); margin: 0; font-size: 0.9rem;">
+                            <strong>Requirements:</strong> Must be 18+ years old with valid driver's license. 
+                            Dogs must be returned by 3:30 PM unless special arrangements are made.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -875,32 +928,26 @@
             <div class="section-content">
                 <h2>Support Our Mission</h2>
                 <p>Join the Friends of Manteca Animal Shelter team! There are many ways to help - donate, volunteer, foster, or purchase items from our wishlist. All support helps us save lives through rescue, rehabilitation, spay/neuter programs, wellness care, and education.</p>
-                <a href="#" class="btn btn-primary">Get Involved</a>
+                <a href="get-involved.html" class="btn btn-primary">Get Involved</a>
             </div>
         </section>
 
-        <!-- Donate & Featured Animals Section -->
+        <!-- Donation Call-to-Action Section -->
         <section class="section" style="background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); color: var(--white);">
             <div class="section-content">
                 <h2 style="color: var(--white); margin-bottom: 1rem;">Help Save Lives Today</h2>
                 <p style="color: var(--white); opacity: 0.95; font-size: 1.2rem; margin-bottom: 2rem;">
-                    Your donation directly helps animals like these find loving homes. Every dollar makes a difference in providing medical care, shelter, and love.
+                    Your donation directly helps animals find loving homes. Every dollar makes a difference in providing medical care, shelter, and love to animals in need.
                 </p>
                 
                 <!-- Donate Button -->
-                <div style="text-align: center; margin-bottom: 3rem;">
-                    <a href="#" class="btn" style="background: var(--white); color: var(--primary-color); padding: 15px 40px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; font-weight: bold;">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <a href="donate.html" class="btn" style="background: var(--white); color: var(--primary-color); padding: 15px 40px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; font-weight: bold;">
                         💝 Donate Now
                     </a>
                 </div>
                 
-                <!-- Animals from Shelter -->
-                <h3 style="color: var(--white); text-align: center; margin-bottom: 2rem;">Animals Currently Seeking Homes</h3>
-                <div id="donatePageAnimals">
-                    <div class="loading" style="color: var(--white);">Loading animals from City of Manteca Animal Shelter...</div>
-                </div>
-                
-                <div style="text-align: center; margin-top: 2rem;">
+                <div style="text-align: center;">
                     <a href="animals.html" class="btn" style="background: rgba(255,255,255,0.2); color: var(--white); border: 2px solid var(--white);">
                         View All Available Animals
                     </a>
@@ -927,7 +974,7 @@
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 2rem;">
-                    <a href="#" class="btn btn-primary">View All Events</a>
+                    <a href="events.html" class="btn btn-primary">View All Events</a>
                 </div>
             </div>
         </section>
@@ -966,9 +1013,9 @@
             <div class="footer-content">
                 <div class="footer-social">
                     <div class="social-icons" style="justify-content: center;">
-                        <a href="#" class="social-icon" title="Email">@</a>
-                        <a href="#" class="social-icon" title="Facebook">f</a>
-                        <a href="#" class="social-icon" title="Instagram">ig</a>
+                        <a href="mailto:info@fomashelter.org" class="social-icon" title="Email">@</a>
+                        <a href="https://facebook.com/fomashelter" class="social-icon" title="Facebook">f</a>
+                        <a href="https://instagram.com/fomashelter" class="social-icon" title="Instagram">ig</a>
                     </div>
                 </div>
                 
@@ -979,7 +1026,7 @@
                 </div>
                 
                 <div class="footer-bottom">
-                    <p><a href="#" style="color: var(--primary-color);">Privacy Policy</a> | © 2025 Friends of Manteca Animal Shelter</p>
+                    <p><a href="privacy-policy.html" style="color: var(--primary-color);">Privacy Policy</a> | © 2025 Friends of Manteca Animal Shelter</p>
                 </div>
             </div>
         </div>
@@ -1011,9 +1058,8 @@
                 }
             });
 
-            // Load featured animals and donate page animals
+            // Load featured animals only once
             loadFeaturedAnimals();
-            loadDonatePageAnimals();
         });
 
         // Load featured animals from Petfinder API
@@ -1047,44 +1093,6 @@
                 console.log('Petfinder API unavailable for featured animals:', error);
                 // Show demo animals instead
                 showDemoFeaturedAnimals();
-            }
-        }
-
-        // Load animals for donate page section
-        async function loadDonatePageAnimals() {
-            const container = document.getElementById('donatePageAnimals');
-            
-            try {
-                // Try to connect to Petfinder API
-                if (!petfinderAccessToken) {
-                    await connectToPetfinder();
-                }
-                
-                if (petfinderAccessToken) {
-                    // Fetch 4 different animals from Manteca Animal Shelter (offset to get different ones)
-                    const response = await fetch(`https://api.petfinder.com/v2/animals?organization=${MANTECA_SHELTER_ID}&limit=8&status=adoptable`, {
-                        headers: {
-                            'Authorization': `Bearer ${petfinderAccessToken}`,
-                            'Content-Type': 'application/json'
-                        }
-                    });
-
-                    if (response.ok) {
-                        const data = await response.json();
-                        // Use animals 5-8 for donate section to avoid duplicates with featured section
-                        const donateAnimals = data.animals?.slice(4, 8) || data.animals?.slice(0, 4) || [];
-                        displayDonatePageAnimals(donateAnimals);
-                    } else {
-                        throw new Error('Failed to fetch donate animals');
-                    }
-                } else {
-                    throw new Error('Failed to authenticate for donate animals');
-                }
-                
-            } catch (error) {
-                console.log('Petfinder API unavailable for donate animals:', error);
-                // Show demo animals instead
-                showDemoDonateAnimals();
             }
         }
 
@@ -1159,201 +1167,17 @@
             container.innerHTML = html;
         }
 
-        // Show demo animals as fallback
+        // Show message when no animals available
         function showDemoFeaturedAnimals() {
             const container = document.getElementById('featuredAnimalsContainer');
             
-            const demoAnimals = [
-                {
-                    name: "Buddy",
-                    breed: "Labrador Retriever",
-                    age: "Adult",
-                    gender: "Male",
-                    photo: "https://images.unsplash.com/photo-1551717743-49959800b1f6?w=400&h=300&fit=crop",
-                    description: "Buddy is a friendly and energetic dog who loves playing fetch and long walks."
-                },
-                {
-                    name: "Luna",
-                    breed: "Domestic Shorthair",
-                    age: "Young", 
-                    gender: "Female",
-                    photo: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=300&fit=crop",
-                    description: "Luna is a sweet and playful cat who loves to cuddle and chase toy mice."
-                },
-                {
-                    name: "Charlie",
-                    breed: "Border Collie Mix",
-                    age: "Adult",
-                    gender: "Male",
-                    photo: "https://images.unsplash.com/photo-1605568427561-40dd23c2acea?w=400&h=300&fit=crop",
-                    description: "Charlie is an intelligent and active dog perfect for an active family."
-                },
-                {
-                    name: "Bella",
-                    breed: "Calico",
-                    age: "Adult",
-                    gender: "Female", 
-                    photo: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400&h=300&fit=crop",
-                    description: "Bella is a gentle and loving cat who enjoys peaceful environments."
-                }
-            ];
-
-            let html = `
-                <div style="background: #e3f2fd; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
-                    <p style="color: #1565c0; margin: 0;"><strong>🌟 Featured Animals from Our Shelter</strong></p>
+            container.innerHTML = `
+                <div style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 30px; border-radius: 15px; text-align: center; color: #856404;">
+                    <h3 style="color: #856404; margin-bottom: 1rem;">🐾 No Featured Animals Available</h3>
+                    <p style="margin-bottom: 1.5rem;">We're currently updating our featured animals list. Please check back soon or visit our animals page to see all available pets.</p>
+                    <a href="animals.html" class="btn btn-primary">View All Available Animals</a>
                 </div>
-                <div class="animals-grid">
             `;
-            
-            demoAnimals.forEach(animal => {
-                html += `
-                    <div class="animal-card">
-                        <div class="animal-image">
-                            <img src="${animal.photo}" alt="${animal.name}">
-                            <div class="animal-badge">Featured</div>
-                        </div>
-                        <div class="animal-info">
-                            <h3>${animal.name}</h3>
-                            <div class="animal-meta">
-                                <span>${animal.breed}</span>
-                                <span>${animal.age}</span>
-                                <span>${animal.gender}</span>
-                            </div>
-                            <p class="animal-description">${animal.description}</p>
-                            <a href="animals.html" class="animal-link">Learn More</a>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            html += '</div>';
-            container.innerHTML = html;
-        }
-
-        // Display animals for donate page section
-        function displayDonatePageAnimals(animals) {
-            const container = document.getElementById('donatePageAnimals');
-            
-            if (!animals || animals.length === 0) {
-                showDemoDonateAnimals();
-                return;
-            }
-
-            let html = '<div class="animals-grid" style="max-width: 1000px; margin: 0 auto;">';
-            
-            // Limit to 4 animals
-            const donateAnimals = animals.slice(0, 4);
-            
-            donateAnimals.forEach(animal => {
-                const hasPhoto = animal.photos && animal.photos.length > 0;
-                const photo = hasPhoto ? (animal.photos[0].large || animal.photos[0].medium || animal.photos[0].small) : null;
-                
-                const breed = animal.breeds.primary + (animal.breeds.secondary ? ` / ${animal.breeds.secondary}` : '');
-                const description = animal.description ? 
-                    (animal.description.length > 80 ? animal.description.substring(0, 80) + '...' : animal.description)
-                    : `${animal.name} is looking for a loving home.`;
-
-                html += `
-                    <div class="animal-card" style="background: rgba(255,255,255,0.95); color: var(--text-dark);">
-                        <div class="animal-image">
-                            ${hasPhoto ? 
-                                `<img src="${photo}" alt="${animal.name}">` : 
-                                `<div style="width: 100%; height: 100%; background: var(--light-gray); display: flex; align-items: center; justify-content: center; color: #999; font-size: 1.2rem;">
-                                    <div style="text-align: center;">
-                                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">${animal.type === 'Dog' ? '🐕' : animal.type === 'Cat' ? '🐱' : '🐾'}</div>
-                                        <div>No Photo Available</div>
-                                    </div>
-                                </div>`
-                            }
-                            <div class="animal-badge">Needs Home</div>
-                        </div>
-                        <div class="animal-info">
-                            <h3 style="color: var(--primary-color);">${animal.name}</h3>
-                            <div class="animal-meta">
-                                <span>${breed}</span>
-                                <span>${animal.age}</span>
-                                <span>${animal.gender}</span>
-                            </div>
-                            <p class="animal-description" style="color: var(--text-dark);">${description}</p>
-                            <a href="animals.html" class="animal-link">Help ${animal.name}</a>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            html += '</div>';
-            container.innerHTML = html;
-        }
-
-        // Show demo animals for donate section
-        function showDemoDonateAnimals() {
-            const container = document.getElementById('donatePageAnimals');
-            
-            const demoAnimals = [
-                {
-                    name: "Rusty",
-                    breed: "Shepherd Mix",
-                    age: "Young",
-                    gender: "Male",
-                    photo: "https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?w=400&h=300&fit=crop",
-                    description: "Rusty is a gentle soul looking for a patient family to help him bloom."
-                },
-                {
-                    name: "Mittens",
-                    breed: "Tabby",
-                    age: "Adult", 
-                    gender: "Female",
-                    photo: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400&h=300&fit=crop",
-                    description: "Mittens loves sunny windows and gentle pets. She's ready for a quiet home."
-                },
-                {
-                    name: "Buster",
-                    breed: "Terrier Mix",
-                    age: "Senior",
-                    gender: "Male",
-                    photo: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&h=300&fit=crop",
-                    description: "Buster has so much love to give and deserves a comfortable retirement home."
-                },
-                {
-                    name: "Princess",
-                    breed: "Persian Mix",
-                    age: "Adult",
-                    gender: "Female", 
-                    photo: "https://images.unsplash.com/photo-1571566882372-1598d88abd90?w=400&h=300&fit=crop",
-                    description: "Princess is looking for her royal family who will appreciate her regal nature."
-                }
-            ];
-
-            let html = `
-                <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
-                    <p style="color: var(--white); margin: 0;"><strong>🌟 Animals from City of Manteca Animal Shelter</strong></p>
-                </div>
-                <div class="animals-grid" style="max-width: 1000px; margin: 0 auto;">
-            `;
-            
-            demoAnimals.forEach(animal => {
-                html += `
-                    <div class="animal-card" style="background: rgba(255,255,255,0.95); color: var(--text-dark);">
-                        <div class="animal-image">
-                            <img src="${animal.photo}" alt="${animal.name}">
-                            <div class="animal-badge">Needs Home</div>
-                        </div>
-                        <div class="animal-info">
-                            <h3 style="color: var(--primary-color);">${animal.name}</h3>
-                            <div class="animal-meta">
-                                <span>${animal.breed}</span>
-                                <span>${animal.age}</span>
-                                <span>${animal.gender}</span>
-                            </div>
-                            <p class="animal-description" style="color: var(--text-dark);">${animal.description}</p>
-                            <a href="animals.html" class="animal-link">Help ${animal.name}</a>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            html += '</div>';
-            container.innerHTML = html;
         }
     </script>
 </body>

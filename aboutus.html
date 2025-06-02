@@ -7,12 +7,14 @@
     <style>
         /* Global Styles */
         :root {
-            --primary-color: #0a5879;
-            --primary-dark: #084761;
-            --secondary-color: #27ae60;
-            --light-gray: #f8f8f8;
-            --border-color: #e0e0e0;
-            --text-color: #444;
+            --primary-color: #df9588;
+            --primary-dark: #c57b6d;
+            --background-color: #9f9a9a;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --black: #000000;
+            --text-dark: #333333;
+            --border-color: #d0d0d0;
         }
         
         * {
@@ -22,13 +24,13 @@
         }
         
         body {
-            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-            color: var(--text-color);
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            color: var(--text-dark);
             line-height: 1.6;
-            background-color: #fff;
+            background-color: var(--background-color);
         }
         
-        .wrapper {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
@@ -41,19 +43,19 @@
         }
         
         a:hover {
-            text-decoration: underline;
+            color: var(--primary-dark);
         }
         
         h1, h2, h3, h4, h5, h6 {
             font-weight: 600;
             margin: 0.5em 0;
-            color: var(--primary-color);
+            color: var(--black);
         }
         
         h2 {
-            font-size: 28px;
+            font-size: 2rem;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 2rem;
         }
         
         img {
@@ -61,195 +63,223 @@
             height: auto;
         }
         
-        /* Header Styles */
-        .logoAndAddress {
+        /* Header */
+        .header {
+            background-color: var(--background-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 0;
         }
         
-        .logoAndAddress img {
-            max-width: 400px;
-            height: auto;
-        }
-        
-        .addressInHeader {
+        .logo {
             display: flex;
-            flex-direction: column;
-            align-items: flex-end;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--black);
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 250px;
+            height: 250px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .logo-img-large {
+            width: 500px;
+            height: 300px;
+            object-fit: contain;
+            display: block;
         }
         
-        .textInside {
+        .contact-info {
             text-align: right;
-            line-height: 1.5;
-            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--white);
         }
         
-        .socialIcons {
+        .social-icons {
             display: flex;
             gap: 10px;
+            margin-bottom: 10px;
+            justify-content: flex-end;
         }
         
-        .socialIcon {
-            width: 40px;
-            height: 40px;
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            background-color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            color: var(--primary-color);
+            font-size: 16px;
+            transition: background-color 0.3s ease;
         }
         
-        .socialIcon img {
-            width: 24px;
-            height: 24px;
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
         }
         
         /* Navigation */
-        #masthead {
-            background-color: var(--primary-color);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        .nav {
+            background-color: var(--black);
         }
         
-        .main-navigation {
-            max-width: 1200px;
-            margin: 0 auto;
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            display: block;
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover,
+        .nav-item.active .nav-link {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .nav-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            min-width: 220px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .nav-item:hover .nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .nav-dropdown a {
+            display: block;
+            color: var(--text-dark);
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .nav-dropdown a:hover {
+            background-color: var(--light-gray);
+            color: var(--primary-color);
         }
         
         .menu-toggle {
             display: none;
             background: none;
             border: none;
-            color: white;
-            font-size: 16px;
-            padding: 15px;
+            color: var(--white);
+            font-size: 1.5rem;
             cursor: pointer;
+            padding: 0.5rem;
         }
         
-        .mega-menu {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap;
-        }
-        
-        .mega-menu-item {
-            position: relative;
-        }
-        
-        .mega-menu-item a {
-            display: block;
-            color: white;
-            padding: 15px 20px;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        
-        .mega-menu-item a:hover {
-            background-color: rgba(255,255,255,0.1);
-        }
-        
-        .mega-menu-item:hover .mega-sub-menu {
-            display: block;
-        }
-        
-        .mega-sub-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            z-index: 100;
-            min-width: 200px;
-            list-style: none;
-            padding: 0;
-        }
-        
-        .mega-sub-menu li a {
-            color: var(--text-color);
-            padding: 10px 20px;
-        }
-        
-        .mega-sub-menu li a:hover {
-            background-color: var(--light-gray);
-        }
-        
-        .mega-indicator {
-            margin-left: 5px;
-        }
-        
-        /* Page Title */
-        .page-title {
-            background-color: var(--light-gray);
-            padding: 30px 0;
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 4rem 0;
             text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 3rem;
         }
         
-        .page-title h1 {
-            margin: 0;
-            color: var(--primary-color);
-            font-size: 32px;
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
         }
         
-        /* About Section */
-        .about-section {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
         
-        .about-section p {
-            margin-bottom: 20px;
-            font-size: 16px;
+        /* Content Sections */
+        .section {
+            background-color: var(--white);
+            margin: 2rem 0;
+            padding: 3rem 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
         
-        .about-image {
-            text-align: center;
-            margin: 40px 0;
+        .section-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: left;
         }
         
-        .about-image img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .section-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
         }
         
         /* Mission and Values */
         .mission-values {
-            background-color: var(--light-gray);
-            padding: 60px 0;
-            margin: 50px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+        }
+        
+        .mission-values h2 {
+            color: var(--white);
         }
         
         .mission-values-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            gap: 3rem;
+            margin-top: 2rem;
         }
         
         .mission-box, .values-box {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
         }
         
-        .mission-box h2, .values-box h2 {
-            text-align: left;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            font-size: 24px;
+        .mission-box h3, .values-box h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .mission-box p, .values-box p {
+            color: var(--white);
+            opacity: 0.9;
+            line-height: 1.6;
         }
         
         .values-list {
@@ -258,643 +288,420 @@
         }
         
         .values-list li {
-            margin-bottom: 15px;
+            margin-bottom: 1rem;
             padding-left: 25px;
             position: relative;
+            color: var(--white);
+            opacity: 0.9;
         }
         
         .values-list li:before {
             content: '✓';
             position: absolute;
             left: 0;
-            color: var(--secondary-color);
+            color: var(--white);
             font-weight: bold;
+            font-size: 1.2rem;
         }
         
-        /* Team Section */
-        .team-section {
-            margin: 60px auto;
-            max-width: 1100px;
-            padding: 0 20px;
-        }
-        
-        .team-grid {
+        /* Programs Section */
+        .programs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
         
-        .team-member {
+        .program-card {
+            background: var(--light-gray);
+            border-radius: 15px;
+            padding: 2rem;
             text-align: center;
+            transition: all 0.3s ease;
         }
         
-        .team-photo {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 20px;
-            border: 5px solid var(--primary-color);
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
-        .team-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .program-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
         
-        .team-member h3 {
-            margin-bottom: 5px;
+        .program-card h3 {
             color: var(--primary-color);
+            margin-bottom: 1rem;
         }
         
-        .team-member .role {
-            font-weight: 600;
-            color: var(--secondary-color);
-            margin-bottom: 10px;
-            display: block;
-        }
-        
-        .team-member p {
-            font-size: 14px;
-        }
-        
-        /* History Timeline */
-        .history-section {
-            margin: 60px auto;
-            max-width: 900px;
-            padding: 0 20px;
-        }
-        
-        .timeline {
-            position: relative;
-            margin: 40px auto;
-            padding: 20px 0;
-        }
-        
-        .timeline:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 4px;
-            background-color: var(--primary-color);
-            transform: translateX(-50%);
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: 50px;
-            display: flex;
-        }
-        
-        .timeline-item:nth-child(odd) {
-            justify-content: flex-start;
-            padding-right: 50%;
-        }
-        
-        .timeline-item:nth-child(even) {
-            justify-content: flex-end;
-            padding-left: 50%;
-        }
-        
-        .timeline-content {
-            width: 90%;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .timeline-date {
-            position: absolute;
-            top: 0;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-date {
-            right: -70px;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-date {
-            left: -70px;
-        }
-        
-        .timeline-content h3 {
-            margin-top: 15px;
-            margin-bottom: 10px;
-        }
-        
-        /* Stats Section */
-        .stats-section {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 60px 0;
+        /* Contact Info */
+        .contact-highlight {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
             text-align: center;
-            margin: 50px 0;
         }
         
-        .stats-section h2 {
-            color: white;
-            margin-bottom: 40px;
+        .contact-highlight h2 {
+            color: var(--white);
+            margin-bottom: 1rem;
         }
         
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .stat-item {
-            padding: 20px;
-        }
-        
-        .stat-number {
-            font-size: 48px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            display: block;
-        }
-        
-        .stat-label {
-            font-size: 18px;
+        .contact-highlight p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
             opacity: 0.9;
         }
         
-        /* Testimonials */
-        .testimonials-section {
-            margin: 60px auto;
-            max-width: 900px;
-            padding: 0 20px;
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .testimonial {
-            background-color: var(--light-gray);
-            border-radius: 10px;
-            padding: 25px;
-            position: relative;
-        }
-        
-        .testimonial:before {
-            content: '"';
-            position: absolute;
-            top: 10px;
-            left: 15px;
-            font-size: 60px;
-            color: rgba(0,0,0,0.1);
-            font-family: Georgia, serif;
-            line-height: 1;
-        }
-        
-        .testimonial p {
-            margin-bottom: 15px;
-            font-style: italic;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .testimonial-photo {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 15px;
-        }
-        
-        .testimonial-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .testimonial-info h4 {
-            margin: 0;
-            font-size: 16px;
-        }
-        
-        .testimonial-info span {
-            font-size: 14px;
-            color: #777;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            text-align: center;
-            margin: 50px auto;
-            max-width: 800px;
-            padding: 0 20px;
-        }
-        
-        .cta-section h2 {
-            margin-bottom: 20px;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-        
-        .cta-button {
-            padding: 12px 25px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-        
-        .cta-button:hover {
-            background-color: var(--primary-dark);
+        .btn {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: bold;
             text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         /* Footer */
-        #colophon {
-            background-color: var(--light-gray);
-            padding: 30px 0;
-            margin-top: 40px;
-            border-top: 1px solid var(--border-color);
+        .footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
         }
         
-        .socialFooter {
-            display: flex;
-            justify-content: center;
-            padding: 10px 0;
-        }
-        
-        .payPalImg {
-            text-align: center;
-            margin: 20px auto;
-            max-width: 80%;
-        }
-        
-        .footerStyle {
-            font-size: 0.9em;
-            margin: 15px 0;
+        .footer-content {
             text-align: center;
         }
         
-        .privacyPolicyFtr {
-            text-align: center;
-            margin: 20px 0;
+        .footer-social {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-info {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-info p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
-            .logoAndAddress {
+            .header-content {
                 flex-direction: column;
                 text-align: center;
+                padding: 1rem 0;
             }
             
-            .addressInHeader {
+            .logo {
+                flex-direction: column;
                 align-items: center;
-                margin-top: 15px;
+                gap: 1px;
             }
             
-            .textInside {
+            .logo-img {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .logo-img-large {
+                width: 200px;
+                height: 50px;
+            }
+            
+            .contact-info {
                 text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
             }
             
             .menu-toggle {
                 display: block;
             }
             
-            .mega-menu {
+            .nav-menu {
                 display: none;
                 flex-direction: column;
+                width: 100%;
             }
             
-            .mega-menu.active {
+            .nav-menu.active {
                 display: flex;
             }
             
-            .mega-sub-menu {
+            .nav-dropdown {
                 position: static;
-                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
                 box-shadow: none;
-                display: none;
+                background-color: var(--light-gray);
             }
             
-            .mega-menu-item:hover .mega-sub-menu {
-                display: none;
+            .hero h1 {
+                font-size: 2rem;
             }
             
-            .timeline:before {
-                left: 30px;
+            .hero p {
+                font-size: 1rem;
             }
             
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                justify-content: flex-start;
-                padding-right: 0;
-                padding-left: 70px;
+            .mission-values-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
             
-            .timeline-item:nth-child(odd) .timeline-date,
-            .timeline-item:nth-child(even) .timeline-date {
-                left: -10px;
-                right: auto;
-            }
-            
-            .timeline-content {
-                width: 100%;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .cta-button {
-                width: 100%;
+            .programs-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div id="page" class="hfeed site">
-        <!-- Header -->
-        <div class="logoAndAddress">
-            <a href="index.html">
-                <img src="https://via.placeholder.com/400x100/0a5879/ffffff?text=Friends+of+Manteca+Animal+Shelter" alt="Friends of Manteca Animal Shelter Logo">
-            </a>
-            <div class="addressInHeader">
-                <div class="socialIcons">
-                    <a href="#" class="socialIcon" title="Email">
-                        <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email">
-                    </a>
-                    <a href="#" class="socialIcon" title="Facebook">
-                        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
-                    </a>
-                    <a href="#" class="socialIcon" title="Instagram">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-                    </a>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="img/fomas.png" alt="Friends of Manteca Animal Shelter Logo" class="logo-img">
+                    <img src="img/fomas2.png" alt="Friends of Manteca Animal Shelter Logo" class="logo-img-large">
                 </div>
-                <div class="textInside">
-                    <br>
-                    <strong>Mailing Address</strong>
-                    <br>
-                    PO Box 123<br>Manteca, California 95337
+                <div class="contact-info">
+                    <div class="social-icons">
+                        <a href="mailto:info@fomashelter.org" class="social-icon" title="Email">@</a>
+                        <a href="https://facebook.com/fomashelter" class="social-icon" title="Facebook">f</a>
+                        <a href="https://instagram.com/fomashelter" class="social-icon" title="Instagram">ig</a>
+                    </div>
+                    <strong>Mailing Address</strong><br>
+                    PO Box 123, Manteca, CA 95337
                 </div>
             </div>
         </div>
-        
-        <header id="masthead" class="site-header" role="banner">
-            <nav id="site-navigation" class="main-navigation" role="navigation">
-                <button class="menu-toggle">Menu</button>
-                <ul class="mega-menu">
-                    <li class="mega-menu-item">
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li class="mega-menu-item mega-menu-item-has-children">
-                        <a href="#">Animals <span class="mega-indicator">▼</span></a>
-                        <ul class="mega-sub-menu">
-                            <li><a href="#">Available Dogs</a></li>
-                            <li><a href="#">Available Cats</a></li>
-                            <li><a href="#">Adoption Application – Dogs</a></li>
-                            <li><a href="#">Adoption Application – Cats</a></li>
-                            <li><a href="#">Adoption Fees</a></li>
-                            <li><a href="#">Adoption FAQs</a></li>
-                            <li><a href="#">Animal Surrender</a></li>
-                        </ul>
-                    </li>
-                    <li class="mega-menu-item mega-menu-item-has-children mega-current-menu-item">
-                        <a href="about.html">About Us <span class="mega-indicator">▼</span></a>
-                        <ul class="mega-sub-menu">
-                            <li><a href="#">Meet the Team</a></li>
-                            <li><a href="#">Our Awards</a></li>
-                            <li><a href="#">What's New</a></li>
-                        </ul>
-                    </li>
-                    <li class="mega-menu-item mega-menu-item-has-children">
-                        <a href="#">Our Programs <span class="mega-indicator">▼</span></a>
-                        <ul class="mega-sub-menu">
-                            <li><a href="#">Spay & Neuter Programs</a></li>
-                            <li><a href="#">Volunteer Programs</a></li>
-                            <li><a href="#">Annual Reports and Statistics</a></li>
-                        </ul>
-                    </li>
-                    <li class="mega-menu-item mega-menu-item-has-children">
-                        <a href="#">Get Involved <span class="mega-indicator">▼</span></a>
-                        <ul class="mega-sub-menu">
-                            <li><a href="#">Volunteer Application</a></li>
-                            <li><a href="#">Foster Application</a></li>
-                            <li><a href="#">Plan An Event</a></li>
-                        </ul>
-                    </li>
-                    <li class="mega-menu-item mega-menu-item-has-children">
-                        <a href="#">Donations <span class="mega-indicator">▼</span></a>
-                        <ul class="mega-sub-menu">
-                            <li><a href="#">Donate Now</a></li>
-                            <li><a href="#">Donate Your Car</a></li>
-                            <li><a href="#">More Ways to Support</a></li>
-                        </ul>
-                    </li>
-                    <li class="mega-menu-item mega-menu-item-has-children">
-                        <a href="#">Events <span class="mega-indicator">▼</span></a>
-                        <ul class="mega-sub-menu">
-                            <li><a href="#">Current Events</a></li>
-                            <li><a href="#">Past Events</a></li>
-                        </ul>
-                    </li>
-                    <li class="mega-menu-item">
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        
-        <!-- Page Title -->
-        <div class="page-title">
-            <div class="wrapper">
-                <h1>About Us</h1>
-            </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <button class="menu-toggle">☰</button>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="animals.html" class="nav-link">Animals</a>
+                    <div class="nav-dropdown">
+                        <a href="animals.html">Available Dogs</a>
+                        <a href="animals.html">Available Cats</a>
+                        <a href="adoption-application.html">Adoption Application</a>
+                        <a href="adoption-fees.html">Adoption Fees</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a href="aboutus.html" class="nav-link">About Us</a>
+                    <div class="nav-dropdown">
+                        <a href="#mission">Our Mission</a>
+                        <a href="#programs">Our Programs</a>
+                        <a href="#contact">Contact Us</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="programs.html" class="nav-link">Programs</a>
+                    <div class="nav-dropdown">
+                        <a href="spay-neuter.html">Spay & Neuter</a>
+                        <a href="volunteer.html">Volunteer Programs</a>
+                        <a href="foster.html">Foster Program</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="get-involved.html" class="nav-link">Get Involved</a>
+                </li>
+                <li class="nav-item">
+                    <a href="donate.html" class="nav-link">Donate</a>
+                </li>
+                <li class="nav-item">
+                    <a href="events.html" class="nav-link">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
         </div>
-        
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>About Us</h1>
+            <p>Dedicated to supporting animals and the people who love them through rescue, education, and community outreach.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
         <!-- About Section -->
-        <section class="about-section">
-            <h2>Our Story</h2>
-            <p>
-                Friends of Manteca Animal Shelter was founded in 2015 by a group of passionate animal lovers who saw a need to support the Manteca Animal Shelter and enhance the lives of homeless animals in our community. What began as a small group of volunteers has grown into a thriving non-profit organization dedicated to animal welfare.
-            </p>
-            <p>
-                Our organization works in partnership with the Manteca Animal Shelter to provide additional resources, support, and care for animals in need. We are committed to reducing the number of homeless animals in our community through adoption, education, and spay/neuter programs.
-            </p>
-            <div class="about-image">
-                <img src="https://via.placeholder.com/800x400/cccccc/666666?text=Friends+of+Manteca+Animal+Shelter+Team" alt="Friends of Manteca Animal Shelter Team">
+        <section class="section">
+            <div class="section-content">
+                <h2>Our Story</h2>
+                <p>
+                    Friends of Manteca Animal Shelter is a volunteer-led 501(c)(3) non-profit animal rescue organization located in Manteca, California. We work in partnership with the Manteca Animal Shelter to support animals and the people who love them through rescue, rehoming, spay/neuter programs, and education.
+                </p>
+                <p>
+                    As a foster-based rescue, our animals are not kept in a traditional shelter environment but are instead cared for in the homes of our dedicated foster families. This approach allows us to provide personalized care and attention to each animal, helping them prepare for their forever homes while learning important socialization skills.
+                </p>
+                <p>
+                    We are entirely funded by the generous support of our donors and the dedication of our volunteers. Every dollar donated and every hour volunteered goes directly toward helping animals in need find loving homes and receive the care they deserve.
+                </p>
             </div>
-            <p>
-                As a foster-based rescue, our animals are not kept in a shelter environment but are instead cared for in the homes of our dedicated foster families. This allows us to provide personalized care and attention to each animal, helping them prepare for their forever homes while learning important socialization skills.
-            </p>
-            <p>
-                Over the years, we have helped hundreds of dogs and cats find loving homes, provided essential medical care to animals in need, and implemented community programs to improve the lives of animals throughout Manteca and surrounding areas.
-            </p>
         </section>
-        
+
         <!-- Mission and Values -->
-        <section class="mission-values">
-            <div class="mission-values-container">
-                <div class="mission-box">
-                    <h2>Our Mission</h2>
-                    <p>
-                        Our mission is to support animals and the people who love them through rescue, rehoming, spay/neuter, and education. We are dedicated to making a difference, one animal at a time.
-                    </p>
-                    <p>
-                        We work tirelessly to find appropriate forever homes for animals in our care, provide vital medical services, promote responsible pet ownership, and advocate for animal welfare within our community.
-                    </p>
-                </div>
-                <div class="values-box">
-                    <h2>Our Core Values</h2>
-                    <ul class="values-list">
-                        <li><strong>Compassion:</strong> We treat all animals with kindness, respect, and dignity.</li>
-                        <li><strong>Integrity:</strong> We maintain the highest ethical standards in all aspects of our work.</li>
-                        <li><strong>Dedication:</strong> We are committed to the well-being of every animal in our care.</li>
-                        <li><strong>Education:</strong> We believe in empowering our community through knowledge about animal welfare.</li>
-                        <li><strong>Collaboration:</strong> We partner with individuals, organizations, and businesses to maximize our impact.</li>
-                        <li><strong>Transparency:</strong> We are accountable to our supporters and the community we serve.</li>
-                    </ul>
+        <section class="section mission-values" id="mission">
+            <div class="section-content">
+                <h2>Our Mission & Values</h2>
+                <div class="mission-values-container">
+                    <div class="mission-box">
+                        <h3>Our Mission</h3>
+                        <p>
+                            Our mission is to support animals and the people who love them through rescue, rehoming, spay/neuter programs, and education. We are dedicated to making a positive impact on the lives of animals in our community through compassionate care, responsible rehoming, and educational outreach programs.
+                        </p>
+                        <p>
+                            We work tirelessly to find appropriate forever homes for animals in our care, provide vital medical services, promote responsible pet ownership, and advocate for animal welfare within our community.
+                        </p>
+                    </div>
+                    <div class="values-box">
+                        <h3>Our Core Values</h3>
+                        <ul class="values-list">
+                            <li><strong>Compassion:</strong> We treat all animals with kindness, respect, and dignity.</li>
+                            <li><strong>Integrity:</strong> We maintain the highest ethical standards in all aspects of our work.</li>
+                            <li><strong>Dedication:</strong> We are committed to the well-being of every animal in our care.</li>
+                            <li><strong>Education:</strong> We believe in empowering our community through knowledge about animal welfare.</li>
+                            <li><strong>Collaboration:</strong> We partner with individuals and organizations to maximize our impact.</li>
+                            <li><strong>Transparency:</strong> We are accountable to our supporters and the community we serve.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
-        
-        <!-- Team Section -->
-        <section class="team-section">
-            <h2>Meet Our Team</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;">
-                Our dedicated team brings together a diverse range of skills and experiences, but we all share one thing in common – a passion for animal welfare. Meet the people who make our mission possible.
-            </p>
+
+        <!-- Programs Section -->
+        <section class="section" id="programs">
+            <div class="section-content">
+                <h2>What We Do</h2>
+                <div class="programs-grid">
+                    <div class="program-card">
+                        <div class="program-icon">🏠</div>
+                        <h3>Animal Rescue & Adoption</h3>
+                        <p>We rescue animals from the shelter and place them in loving foster homes until they find their forever families.</p>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-icon">✂️</div>
+                        <h3>Spay & Neuter Programs</h3>
+                        <p>We provide affordable spay and neuter services to help reduce pet overpopulation in our community.</p>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-icon">🏥</div>
+                        <h3>Medical Care</h3>
+                        <p>We ensure all animals receive necessary medical care, vaccines, and treatment before adoption.</p>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-icon">🎓</div>
+                        <h3>Education & Outreach</h3>
+                        <p>We educate the community about responsible pet ownership and animal welfare issues.</p>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-icon">🐕</div>
+                        <h3>Doggy Day Out</h3>
+                        <p>Our program allows community members to take shelter dogs out for adventures, reducing stress and increasing adoption opportunities.</p>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-icon">👥</div>
+                        <h3>Foster Program</h3>
+                        <p>We provide support and resources to foster families who open their homes to animals in need.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Highlight -->
+        <section class="section contact-highlight" id="contact">
+            <div class="section-content">
+                <h2>Get Involved</h2>
+                <p>Ready to make a difference in the lives of animals? There are many ways to help support our mission.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+                    <a href="volunteer.html" class="btn">Volunteer</a>
+                    <a href="foster.html" class="btn">Foster</a>
+                    <a href="donate.html" class="btn">Donate</a>
+                    <a href="animals.html" class="btn">Adopt</a>
+                    <a href="contact.html" class="btn">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-social">
+                    <div class="social-icons" style="justify-content: center;">
+                        <a href="mailto:info@fomashelter.org" class="social-icon" title="Email">@</a>
+                        <a href="https://facebook.com/fomashelter" class="social-icon" title="Facebook">f</a>
+                        <a href="https://instagram.com/fomashelter" class="social-icon" title="Instagram">ig</a>
+                    </div>
+                </div>
+                
+                <div class="footer-info">
+                    <p><strong>Mailing Address: PO Box 123, Manteca, California 95337</strong></p>
+                    <p>Friends of Manteca Animal Shelter is a 501(c)(3) organization that relies on your donations to continue to save companion animals.</p>
+                    <p><strong>Tax ID# XX-XXXXXXX</strong></p>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p><a href="privacy-policy.html" style="color: var(--primary-color);">Privacy Policy</a> | © 2025 Friends of Manteca Animal Shelter</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
             
-            <div class="team-grid">
-                <!-- Team Member 1 -->
-                <div class="team-member">
-                    <div class="team-photo">
-                        <img src="https://via.placeholder.com/180x180/cccccc/666666?text=Sarah" alt="Sarah Johnson">
-                    </div>
-                    <h3>Sarah Johnson</h3>
-                    <span class="role">Executive Director</span>
-                    <p>Sarah has over 15 years of experience in animal welfare and has been with Friends of Manteca Animal Shelter since its founding in 2015.</p>
-                </div>
-                
-                <!-- Team Member 2 -->
-                <div class="team-member">
-                    <div class="team-photo">
-                        <img src="https://via.placeholder.com/180x180/cccccc/666666?text=Michael" alt="Michael Chen">
-                    </div>
-                    <h3>Michael Chen</h3>
-                    <span class="role">Operations Manager</span>
-                    <p>Michael oversees our daily operations, coordinating our foster network and adoption events to ensure everything runs smoothly.</p>
-                </div>
-                
-                <!-- Team Member 3 -->
-                <div class="team-member">
-                    <div class="team-photo">
-                        <img src="https://via.placeholder.com/180x180/cccccc/666666?text=Emily" alt="Emily Rodriguez">
-                    </div>
-                    <h3>Emily Rodriguez</h3>
-                    <span class="role">Volunteer Coordinator</span>
-                    <p>Emily manages our amazing team of volunteers and ensures they have the training and resources needed to support our mission.</p>
-                </div>
-                
-                <!-- Team Member 4 -->
-                <div class="team-member">
-                    <div class="team-photo">
-                        <img src="https://via.placeholder.com/180x180/cccccc/666666?text=David" alt="David Martinez">
-                    </div>
-                    <h3>Dr. David Martinez</h3>
-                    <span class="role">Veterinary Advisor</span>
-                    <p>Dr. Martinez provides expert medical guidance and supports our spay/neuter programs with his extensive veterinary experience.</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- History Timeline -->
-        <section class="history-section">
-            <h2>Our History</h2>
-            <div class="timeline">
-                <!-- Timeline Item 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-date">2015</span>
-                        <h3>Foundation</h3>
-                        <p>Friends of Manteca Animal Shelter was founded by a group of dedicated volunteers committed to supporting the local animal shelter.</p>
-                    </div>
-                </div>
-                
-                <!-- Timeline Item 2 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-date">2016</span>
-                        <h3>501(c)(3) Status</h3>
-                        <p>We obtained our official non-profit status, allowing us to expand our fundraising efforts and community programs.</p>
-                    </div>
-                </div>
-                
-                <!-- Timeline Item 3 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-date">2018</span>
-                        <h3>Foster Program Launch</h3>
-                        <p>We established our foster program, moving away from a traditional shelter environment to provide more personalized care for our animals.</p>
-                    </div>
-                </div>
-                
-                <!-- Timeline Item 4 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-date">2020</span>
-                        <h3>Spay/Neuter Initiative</h3>
-                        <p>We launched our community spay/neuter program, providing affordable services to reduce pet overpopulation in Manteca.</p>
-                    </div>
-                </div>
-                
-                <!-- Timeline Item 5 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-date">2022</span>
-                        <h3>Community Education Program</h3>
-                        <p>We expanded our educational outreach, offering workshops and resources to promote responsible pet ownership.</p>
-                    </div>
-                </div>
-                
-                <!-- Timeline Item 6 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-date">2024</span>
-                        <h3>New Partnerships</h3>
-                        <p>We established collaborations with local businesses and organizations to increase our impact and reach within the community.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Stats Section -->
-        <section class="stats-section">
-            <h2>Our Impact</h2>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="stat-number">1
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav')) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
