@@ -19,16 +19,39 @@
 
         // Download DDO Form function
         function downloadDDOForm() {
-            // Create a link element and trigger download
-            const link = document.createElement('a');
-            link.href = 'documents/doggy-day-out-form.pdf';
-            link.download = 'Doggy-Day-Out-Form.pdf';
-            link.target = '_blank';
-            
-            // Trigger the download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            try {
+                // First try direct window.open approach
+                const fileUrl = 'documents/doggy-day-out-form.pdf';
+                
+                // Check if file exists first
+                fetch(fileUrl, { method: 'HEAD' })
+                    .then(response => {
+                        if (response.ok) {
+                            // File exists, proceed with download
+                            const link = document.createElement('a');
+                            link.href = fileUrl;
+                            link.download = 'Doggy-Day-Out-Form.pdf';
+                            link.target = '_blank';
+                            
+                            // Append to body, click, and remove
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                        } else {
+                            throw new Error('File not found');
+                        }
+                    })
+                    .catch(error => {
+                        // Fallback - try opening in new tab
+                        console.error('Download failed, trying fallback:', error);
+                        window.open('documents/doggy-day-out-form.pdf', '_blank');
+                    });
+                    
+            } catch (error) {
+                // Final fallback - show helpful message
+                console.error('All download methods failed:', error);
+                alert('Download not available at this time.\n\nPlease contact us at:\n• Phone: (209) 456-8270\n• Email: info@fomashelter.org\n\nWe can email you the Doggy Day Out form or provide it when you visit the shelter.');
+            }
         }
         
         * {

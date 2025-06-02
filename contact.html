@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Contact Us - Friends of Manteca Animal Shelter</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #df9588;
+            --primary-dark: #c57b6d;
+            --background-color: #9f9a9a;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --black: #000000;
+            --text-dark: #333333;
+            --border-color: #d0d0d0;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--background-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--primary-dark);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            margin: 0.5em 0;
+            color: var(--black);
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Header */
+        .header {
+            background-color: var(--background-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--black);
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 250px;
+            height: 250px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .logo-img-large {
+            width: 500px;
+            height: 300px;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .contact-info {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--white);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            justify-content: flex-end;
+        }
+        
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        /* Navigation */
+        .nav {
+            background-color: var(--black);
+        }
+        
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            display: block;
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover,
+        .nav-item.active .nav-link {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .nav-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            min-width: 220px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .nav-item:hover .nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .nav-dropdown a {
+            display: block;
+            color: var(--text-dark);
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .nav-dropdown a:hover {
+            background-color: var(--light-gray);
+            color: var(--primary-color);
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Content Sections */
+        .section {
+            background-color: var(--white);
+            margin: 2rem 0;
+            padding: 3rem 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .section-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-form {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+        
+        .contact-form h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Contact Info */
+        .contact-info-section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-info-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--light-gray);
+            border-radius: 10px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-details p {
+            margin: 0;
+            color: var(--text-dark);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 2rem;
+        }
+        
+        .faq-item {
+            background: var(--light-gray);
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question:hover {
+            background: var(--primary-dark);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 1.5rem;
+            max-height: 200px;
+        }
+        
+        .faq-toggle {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        /* Emergency Section */
+        .emergency-section {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .emergency-section h2 {
+            color: var(--white);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            text-align: center;
+        }
+        
+        .footer-social {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-info {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-info p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem 0;
+            }
+            
+            .logo {
+                flex-direction: column;
+                align-items: center;
+                gap: 1px;
+            }
+            
+            .logo-img {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .logo-img-large {
+                width: 200px;
+                height: 50px;
+            }
+            
+            .contact-info {
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background-color: var(--light-gray);
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="img/fomas.png" alt="Friends of Manteca Animal Shelter Logo" class="logo-img">
+                    <img src="img/fomas2.png" alt="Friends of Manteca Animal Shelter Logo" class="logo-img-large">
+                </div>
+                <div class="contact-info">
+                    <div class="social-icons">
+                        <a href="mailto:info@fomashelter.org" class="social-icon" title="Email">@</a>
+                        <a href="https://facebook.com/fomashelter" class="social-icon" title="Facebook">f</a>
+                        <a href="https://instagram.com/fomashelter" class="social-icon" title="Instagram">ig</a>
+                    </div>
+                    <strong>Mailing Address</strong><br>
+                    PO Box 123, Manteca, CA 95337
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <button class="menu-toggle">☰</button>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="animals.html" class="nav-link">Animals</a>
+                    <div class="nav-dropdown">
+                        <a href="animals.html">Available Dogs</a>
+                        <a href="animals.html">Available Cats</a>
+                        <a href="adoption-application.html">Adoption Application</a>
+                        <a href="adoption-fees.html">Adoption Fees</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="aboutus.html" class="nav-link">About Us</a>
+                    <div class="nav-dropdown">
+                        <a href="aboutus.html#mission">Our Mission</a>
+                        <a href="aboutus.html#programs">Our Programs</a>
+                        <a href="aboutus.html#contact">Contact Us</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="programs.html" class="nav-link">Programs</a>
+                    <div class="nav-dropdown">
+                        <a href="spay-neuter.html">Spay & Neuter</a>
+                        <a href="volunteer.html">Volunteer Programs</a>
+                        <a href="foster.html">Foster Program</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="get-involved.html" class="nav-link">Get Involved</a>
+                </li>
+                <li class="nav-item">
+                    <a href="donate.html" class="nav-link">Donate</a>
+                </li>
+                <li class="nav-item">
+                    <a href="events.html" class="nav-link">Events</a>
+                </li>
+                <li class="nav-item active">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you! Reach out with questions, adoption inquiries, or to learn how you can help.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Emergency Section -->
+        <section class="section emergency-section">
+            <div class="section-content">
+                <h2>🚨 Animal Emergency?</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;">If you've found an injured or stray animal, please contact:</p>
+                <p style="font-size: 1.5rem; font-weight: bold;">Manteca Animal Services: (209) 456-7890</p>
+                <p style="margin-top: 1rem;">For after-hours emergencies, contact your nearest 24-hour veterinary clinic.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section">
+            <div class="section-content">
+                <h2>Get In Touch</h2>
+                <div class="contact-grid">
+                    <!-- Contact Form -->
+                    <div class="contact-form">
+                        <h3>Send us a Message</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a topic</option>
+                                    <option value="adoption">Adoption Inquiry</option>
+                                    <option value="volunteer">Volunteer Opportunities</option>
+                                    <option value="foster">Foster Program</option>
+                                    <option value="donation">Donation Question</option>
+                                    <option value="surrender">Animal Surrender</option>
+                                    <option value="general">General Question</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" placeholder="Please provide details about your inquiry..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Contact Information -->
+                    <div class="contact-info-section">
+                        <h3>Contact Information</h3>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p><a href="mailto:info@fomashelter.org">info@fomashelter.org</a></p>
+                                <p><a href="mailto:adopt@fomashelter.org">adopt@fomashelter.org</a> (Adoptions)</p>
+                                <p><a href="mailto:volunteer@fomashelter.org">volunteer@fomashelter.org</a> (Volunteers)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div class="contact-details">
+                                <h4>Phone</h4>
+                                <p><strong>Main:</strong> (209) 555-FOMA (3662)</p>
+                                <p><strong>Adoption Hotline:</strong> (209) 555-PETS (7387)</p>
+                                <p><em>Monday - Friday: 9 AM - 5 PM</em></p>
+                                <p><em>Saturday: 10 AM - 4 PM</em></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-details">
+                                <h4>Mailing Address</h4>
+                                <p>Friends of Manteca Animal Shelter</p>
+                                <p>PO Box 123</p>
+                                <p>Manteca, CA 95337</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">🏠</div>
+                            <div class="contact-details">
+                                <h4>Manteca Animal Shelter</h4>
+                                <p>1001 W. Raymus St.</p>
+                                <p>Manteca, CA 95337</p>
+                                <p><em>Adoption Hours:</em></p>
+                                <p>Tuesday - Friday: 12 PM - 5 PM</p>
+                                <p>Saturday: 10 AM - 4 PM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">💻</div>
+                            <div class="contact-details">
+                                <h4>Social Media</h4>
+                                <p><a href="https://facebook.com/fomashelter" target="_blank">Facebook</a></p>
+                                <p><a href="https://instagram.com/fomashelter" target="_blank">Instagram</a></p>
+                                <p><a href="https://twitter.com/fomashelter" target="_blank">Twitter</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section">
+            <div class="section-content">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-section">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>How do I adopt an animal?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Visit our Animals page to view available pets, fill out an adoption application, and schedule a meet-and-greet. Our adoption team will guide you through the process to ensure a perfect match.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>What are your adoption fees?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Adoption fees vary by animal type and age. Dogs are typically $150-$250, cats $75-$125. All animals are spayed/neutered, vaccinated, and microchipped. Visit our Adoption Fees page for detailed information.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>How can I volunteer?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We welcome volunteers! Fill out our volunteer application and attend an orientation session. Opportunities include dog walking, cat socialization, event assistance, and administrative tasks.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Do you accept animal surrenders?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We work with the Manteca Animal Shelter for surrenders. Please contact us first to discuss your situation - we may be able to provide resources to help you keep your pet or assist with rehoming.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>What donations do you need most?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We always need blankets, towels, pet food, toys, and cleaning supplies. Monetary donations help us provide medical care and spay/neuter services. Check our current wishlist on our Donate page.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-social">
+                    <div class="social-icons" style="justify-content: center;">
+                        <a href="mailto:info@fomashelter.org" class="social-icon" title="Email">@</a>
+                        <a href="https://facebook.com/fomashelter" class="social-icon" title="Facebook">f</a>
+                        <a href="https://instagram.com/fomashelter" class="social-icon" title="Instagram">ig</a>
+                    </div>
+                </div>
+                
+                <div class="footer-info">
+                    <p><strong>Mailing Address: PO Box 123, Manteca, California 95337</strong></p>
+                    <p>Friends of Manteca Animal Shelter is a 501(c)(3) organization that relies on your donations to continue to save companion animals.</p>
+                    <p><strong>Tax ID# XX-XXXXXXX</strong></p>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p><a href="privacy-policy.html" style="color: var(--primary-color);">Privacy Policy</a> | © 2025 Friends of Manteca Animal Shelter</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav')) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // FAQ Toggle functionality
+        function toggleFAQ(question) {
+            const faqItem = question.parentElement;
+            const answer = question.nextElementSibling;
+            const toggle = question.querySelector('.faq-toggle');
+            
+            faqItem.classList.toggle('active');
+            answer.classList.toggle('active');
+            
+            if (faqItem.classList.contains('active')) {
+                toggle.textContent = '×';
+            } else {
+                toggle.textContent = '+';
+            }
+        }
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you within 24 hours.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
