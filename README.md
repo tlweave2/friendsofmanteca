@@ -4,7 +4,7 @@ A responsive, modern website for Friends of Manteca Animal Shelter (FOMAS) - a 5
 
 ## 🌟 Live Demo
 
-**[Visit the Live Website](https://yourusername.github.io/fomas-website)** *(Replace with your actual GitHub Pages URL)*
+**[Visit the Live Website] https://tlweave2.github.io/friendsofmanteca/
 
 ## 📖 About
 
