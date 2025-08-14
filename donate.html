@@ -265,74 +265,34 @@
             margin-bottom: 2rem;
         }
 
-        .amount-buttons {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .amount-btn {
-            padding: 12px 8px;
+        .amount-btn-link {
+            display: inline-block;
+            padding: 15px 20px;
             background: rgba(255,255,255,0.2);
             border: 2px solid rgba(255,255,255,0.3);
             color: var(--white);
             border-radius: 8px;
-            cursor: pointer;
+            text-decoration: none;
             transition: all 0.3s ease;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            margin: 0.5rem;
         }
 
-        .amount-btn:hover,
-        .amount-btn.selected {
+        .amount-btn-link:hover {
             background: var(--white);
             color: var(--primary-color);
             border-color: var(--white);
             transform: translateY(-2px);
+            text-decoration: none;
         }
 
-        .custom-amount {
-            margin-top: 1rem;
-            display: none;
-        }
-
-        .custom-amount input {
-            padding: 12px 15px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            width: 150px;
-            text-align: center;
-            margin: 0 10px;
-        }
-
-        .amount-display {
-            background: var(--white);
-            color: var(--primary-color);
-            padding: 1rem;
-            border-radius: 8px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin: 1.5rem auto;
-            max-width: 300px;
-        }
-
-        /* PayPal Button Container */
-        .paypal-button-container {
-            max-width: 350px;
-            margin: 2rem auto;
-        }
-
-        .loading-message {
-            background: rgba(255,255,255,0.1);
-            padding: 1.5rem;
-            border-radius: 10px;
-            color: var(--white);
-            text-align: center;
+        .amount-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 2rem 0;
         }
 
         /* Footer */
@@ -366,64 +326,70 @@
             opacity: 0.8;
         }
         
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-                padding: 1rem 0;
+            /* Responsive Design */
+            @media (max-width: 768px) {
+                .header-content {
+                    flex-direction: column;
+                    text-align: center;
+                    padding: 1rem 0;
+                }
+                
+                .logo {
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 1px;
+                }
+                
+                .logo-img {
+                    width: 180px;
+                    height: 180px;
+                }
+                
+                .logo-img-large {
+                    width: 200px;
+                    height: 50px;
+                }
+                
+                .contact-info {
+                    text-align: center;
+                }
+                
+                .social-icons {
+                    justify-content: center;
+                }
+                
+                .menu-toggle {
+                    display: block;
+                }
+                
+                .nav-menu {
+                    display: none;
+                    flex-direction: column;
+                    width: 100%;
+                }
+                
+                .nav-menu.active {
+                    display: flex;
+                }
+                
+                .hero h1 {
+                    font-size: 2rem;
+                }
+                
+                .hero p {
+                    font-size: 1rem;
+                }
+                
+                .amount-buttons {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                
+                .amount-btn-link {
+                    width: 200px;
+                    text-align: center;
+                }
             }
-            
-            .logo {
-                flex-direction: column;
-                align-items: center;
-                gap: 1px;
-            }
-            
-            .logo-img {
-                width: 180px;
-                height: 180px;
-            }
-            
-            .logo-img-large {
-                width: 200px;
-                height: 50px;
-            }
-            
-            .contact-info {
-                text-align: center;
-            }
-            
-            .social-icons {
-                justify-content: center;
-            }
-            
-            .menu-toggle {
-                display: block;
-            }
-            
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            .nav-menu.active {
-                display: flex;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .amount-buttons {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
     </style>
 </head>
 <body>
@@ -510,60 +476,53 @@
             </div>
         </section>
 
-        <!-- PayPal Donation Section -->
+        <!-- PayPal Donation Section with Direct Links -->
         <section class="paypal-donation">
-            <h3>💝 Secure Donation with PayPal</h3>
-            <p>Choose your donation amount and complete your secure payment</p>
+            <h3>💝 Quick PayPal Donations</h3>
+            <p>Click any amount below to open PayPal in a popup window!</p>
             
             <div class="amount-selection">
                 <div class="amount-buttons">
-                    <button class="amount-btn selected" data-amount="25">$25</button>
-                    <button class="amount-btn" data-amount="50">$50</button>
-                    <button class="amount-btn" data-amount="100">$100</button>
-                    <button class="amount-btn" data-amount="250">$250</button>
-                    <button class="amount-btn" data-amount="300">$300</button>
-                    <button class="amount-btn" data-amount="400">$400</button>
-                    <button class="amount-btn" data-amount="500">$500</button>
-                    <button class="amount-btn" data-amount="custom">Custom</button>
+                    <!-- PayPal Hosted Button Links - Replace with your actual button IDs -->
+                    <a href="https://www.paypal.com/donate/?hosted_button_id=YOUR_25_BUTTON_ID" 
+                       class="amount-btn-link" onclick="openPayPalPopup(this.href); return false;">$25</a>
+                    
+                    <!-- Test button for $50 -->
+                    <a href="https://www.paypal.com/donate/?hosted_button_id=JU2X63RUD62EA" 
+                       class="amount-btn-link" onclick="openPayPalPopup(this.href); return false;">$50</a>
+                    
+                    <a href="https://www.paypal.com/donate/?hosted_button_id=YOUR_100_BUTTON_ID" 
+                       class="amount-btn-link" onclick="openPayPalPopup(this.href); return false;">$100</a>
+                    
+                    <a href="https://www.paypal.com/donate/?hosted_button_id=YOUR_250_BUTTON_ID" 
+                       class="amount-btn-link" onclick="openPayPalPopup(this.href); return false;">$250</a>
+                    
+                    <a href="https://www.paypal.com/donate/?hosted_button_id=YOUR_300_BUTTON_ID" 
+                       class="amount-btn-link" onclick="openPayPalPopup(this.href); return false;">$300</a>
+                    
+                    <a href="https://www.paypal.com/donate/?hosted_button_id=YOUR_400_BUTTON_ID" 
+                       class="amount-btn-link" onclick="openPayPalPopup(this.href); return false;">$400</a>
+                    
+                    <a href="https://www.paypal.com/donate/?hosted_button_id=YOUR_500_BUTTON_ID" 
+                       class="amount-btn-link" onclick="openPayPalPopup(this.href); return false;">$500</a>
+                    
+                    <!-- Custom amount - you can create a custom button for this too -->
+                    <a href="https://www.paypal.com/donate/?hosted_button_id=YOUR_CUSTOM_BUTTON_ID" 
+                       class="amount-btn-link" onclick="openPayPalPopup(this.href); return false;">Custom Amount</a>
                 </div>
                 
-                <div class="custom-amount" id="customAmountSection">
-                    <label style="color: var(--white); font-weight: bold;">Enter Amount:</label>
-                    <input type="number" id="customAmount" placeholder="0.00" min="1" step="0.01">
-                </div>
+                <p style="color: var(--white); margin-top: 1rem; opacity: 0.9;">
+                    Click any amount above to open PayPal in a popup window - you'll stay on our site!
+                </p>
                 
-                <div class="amount-display">
-                    Donation Amount: $<span id="selectedAmount">25.00</span>
-                </div>
-            </div>
-            
-            <!-- PayPal Button Container -->
-            <div class="paypal-button-container">
-                <div id="paypal-button-container-actual"></div>
-                <div class="loading-message" id="paypal-loading">
-                    <h4>Setting up secure PayPal checkout...</h4>
-                    <p>PayPal buttons will appear here once you add your Client ID</p>
+                <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem; font-size: 0.9rem;">
+                    <p><strong>Note:</strong> The $50 button is ready to test! PayPal will open in a popup window and you'll return to our site when done.</p>
                 </div>
             </div>
             
             <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 1.5rem;">
-                ✓ Secure PayPal checkout &nbsp;•&nbsp; ✓ No account required &nbsp;•&nbsp; ✓ Instant receipt &nbsp;•&nbsp; ✓ Tax deductible
+                ✓ Secure PayPal popup &nbsp;•&nbsp; ✓ No account required &nbsp;•&nbsp; ✓ Stay on our site &nbsp;•&nbsp; ✓ Tax deductible
             </p>
-            
-            <!-- Setup Instructions -->
-            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 10px; margin-top: 2rem; text-align: left;">
-                <h4 style="color: var(--white); margin-bottom: 1rem;">🔧 To Enable PayPal Integration:</h4>
-                <ol style="color: var(--white); opacity: 0.9; line-height: 1.6;">
-                    <li>Log into your <strong>PayPal Business account</strong></li>
-                    <li>Go to <strong>PayPal Developer</strong> (developer.paypal.com)</li>
-                    <li>Create or select an app to get your <strong>Client ID</strong></li>
-                    <li>Replace <strong>"YOUR_CLIENT_ID"</strong> in the script tag below</li>
-                    <li>The PayPal buttons will then work with your exact amounts!</li>
-                </ol>
-                <p style="color: var(--white); margin-top: 1rem; opacity: 0.8;">
-                    <strong>Benefits:</strong> Users click $50, PayPal checkout opens with exactly $50 pre-filled!
-                </p>
-            </div>
         </section>
 
         <!-- Footer Info -->
@@ -602,10 +561,23 @@
         </div>
     </footer>
 
-    <!-- PayPal SDK - Replace YOUR_CLIENT_ID with your actual Client ID -->
-    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD&intent=capture"></script>
-    
     <script>
+        // PayPal popup function
+        function openPayPalPopup(url) {
+            const popup = window.open(
+                url,
+                'PayPalDonation',
+                'width=600,height=700,scrollbars=yes,resizable=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes'
+            );
+            
+            // Focus the popup window
+            if (popup) {
+                popup.focus();
+            }
+            
+            return false;
+        }
+        
         // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.querySelector('.menu-toggle');
@@ -623,131 +595,6 @@
                     navMenu.classList.remove('active');
                 }
             });
-
-            // Amount selection functionality
-            const amountButtons = document.querySelectorAll('.amount-btn');
-            const customSection = document.getElementById('customAmountSection');
-            const customInput = document.getElementById('customAmount');
-            const selectedAmountDisplay = document.getElementById('selectedAmount');
-            
-            let currentAmount = 25.00;
-
-            // Handle amount button selection
-            amountButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove selected class from all buttons
-                    amountButtons.forEach(btn => btn.classList.remove('selected'));
-                    
-                    // Add selected class to clicked button
-                    this.classList.add('selected');
-                    
-                    if (this.dataset.amount === 'custom') {
-                        customSection.style.display = 'block';
-                        customInput.focus();
-                        updateAmount(customInput.value || 25);
-                    } else {
-                        customSection.style.display = 'none';
-                        updateAmount(this.dataset.amount);
-                    }
-                });
-            });
-
-            // Handle custom amount input
-            if (customInput) {
-                customInput.addEventListener('input', function() {
-                    updateAmount(this.value || 25);
-                });
-            }
-
-            function updateAmount(amount) {
-                currentAmount = parseFloat(amount) || 25.00;
-                selectedAmountDisplay.textContent = currentAmount.toFixed(2);
-                
-                // Re-render PayPal buttons with new amount
-                renderPayPalButtons();
-            }
-
-            // Initialize PayPal buttons
-            renderPayPalButtons();
-
-            function renderPayPalButtons() {
-                const container = document.getElementById('paypal-button-container-actual');
-                const loadingMessage = document.getElementById('paypal-loading');
-                
-                // Clear existing buttons
-                container.innerHTML = '';
-                
-                // Check if PayPal SDK is loaded and configured
-                if (typeof paypal === 'undefined') {
-                    loadingMessage.style.display = 'block';
-                    loadingMessage.innerHTML = `
-                        <h4>PayPal SDK not loaded</h4>
-                        <p>Add your PayPal Client ID to enable secure checkout</p>
-                    `;
-                    return;
-                }
-
-                // Check if client ID is configured
-                if (window.location.search.includes('client-id=YOUR_CLIENT_ID')) {
-                    loadingMessage.style.display = 'block';
-                    loadingMessage.innerHTML = `
-                        <h4>🔧 PayPal Setup Required</h4>
-                        <p>Replace YOUR_CLIENT_ID with your actual PayPal Client ID</p>
-                        <p style="font-size: 0.9rem; margin-top: 1rem;">Once configured, users can click $50 and PayPal will open with exactly $50!</p>
-                    `;
-                    return;
-                }
-
-                // Hide loading message and render PayPal buttons
-                loadingMessage.style.display = 'none';
-
-                try {
-                    paypal.Buttons({
-                        createOrder: function(data, actions) {
-                            return actions.order.create({
-                                purchase_units: [{
-                                    amount: {
-                                        value: currentAmount.toFixed(2),
-                                        currency_code: 'USD'
-                                    },
-                                    description: `Donation to Friends of Manteca Animal Shelter - $${currentAmount.toFixed(2)}`
-                                }]
-                            });
-                        },
-                        onApprove: function(data, actions) {
-                            return actions.order.capture().then(function(details) {
-                                // Show success message
-                                alert(`Thank you for your $${currentAmount.toFixed(2)} donation, ${details.payer.name.given_name}!\n\nYour donation helps us continue saving animals in need.\n\nTransaction ID: ${details.id}\n\nA receipt has been sent to your email.`);
-                                
-                                // Optional: redirect to thank you page
-                                // window.location.href = 'thank-you.html';
-                            });
-                        },
-                        onError: function(err) {
-                            console.error('PayPal Error:', err);
-                            alert('There was an error processing your donation. Please try again or contact us for assistance.');
-                        },
-                        onCancel: function(data) {
-                            console.log('PayPal payment cancelled:', data);
-                            // Payment was cancelled, no action needed
-                        },
-                        style: {
-                            color: 'blue',
-                            shape: 'rect',
-                            label: 'donate',
-                            height: 45,
-                            tagline: false
-                        }
-                    }).render('#paypal-button-container-actual');
-                } catch (error) {
-                    console.error('PayPal Button Render Error:', error);
-                    loadingMessage.style.display = 'block';
-                    loadingMessage.innerHTML = `
-                        <h4>PayPal Button Error</h4>
-                        <p>Please check your PayPal Client ID configuration</p>
-                    `;
-                }
-            }
         });
     </script>
 </body>
