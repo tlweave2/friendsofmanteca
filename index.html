@@ -813,9 +813,9 @@
         <!-- Doggie Day Out Section -->
         <section class="section stats-section">
             <div class="section-content">
-                <h2>🐕 Doggie Day Out (DDO) Program</h2>
+                <h2>🐕 Doggie Day Out (DDO)</h2>
                 <p style="color: var(--white); font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
-                    Give a shelter dog a break from shelter life! Take a furry friend out for a day of fun and adventure.
+                    A nationwide, short-term foster program where the public can take adoptable dogs out from their local shelter for the day. FOMAS supports this program to help more dogs find their forever homes.
                 </p>
                 
                 <div class="stats-grid">
@@ -865,6 +865,9 @@
                     <div style="text-align: center;">
                         <button onclick="downloadDDOForm()" style="background: var(--white); color: var(--primary-color); border: none; padding: 15px 30px; border-radius: 25px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin: 0 0.5rem; transition: all 0.3s ease;">
                             📄 Download DDO Form
+                        </button>
+                        <button onclick="askMeHow()" style="background: var(--primary-color); color: var(--white); border: 2px solid var(--white); padding: 13px 30px; border-radius: 25px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin: 0 0.5rem; transition: all 0.3s ease;">
+                            💡 Ask Me How
                         </button>
                         <a href="contact.html" style="background: rgba(255,255,255,0.2); color: var(--white); border: 2px solid var(--white); padding: 13px 30px; border-radius: 25px; font-size: 1.1rem; font-weight: bold; text-decoration: none; margin: 0 0.5rem; display: inline-block; transition: all 0.3s ease;">
                             📞 Contact for Info
@@ -1002,6 +1005,27 @@
                 console.error('All download methods failed:', error);
                 alert('Download not available at this time.\n\nPlease contact us at:\n• Phone: (209) 456-8270\n• Email: info@fomashelter.org\n\nWe can email you the Doggy Day Out form or provide it when you visit the shelter.');
             }
+        }
+
+        // Ask Me How function for DDO
+        function askMeHow() {
+            const message = `Ready to give a shelter dog the best day ever? Here's how the Doggie Day Out program works:
+
+📋 STEP 1: Fill out the DDO form (you can download it above)
+🏠 STEP 2: Visit Manteca Animal Shelter 
+🐕 STEP 3: Choose an adoptable dog to take out
+⏰ STEP 4: Return by 3:30 PM same day (overnight stays available with special arrangements)
+
+Requirements:
+• Must be 18+ years old
+• Valid driver's license or ID required
+• Dogs must be returned by 3:30 PM unless special arrangements made
+
+It's that simple! You'll be giving a shelter dog a much-needed break while helping them get exposure that could lead to their forever home.
+
+Ready to get started? Download the form above or contact Manteca Animal Shelter for more information!`;
+
+            alert(message);
         }
 
         // Petfinder API Integration for Featured Animals
